@@ -604,6 +604,6 @@ In our next tutorial, explore more capabilities of our state management system a
 
 - [Part 1: Build a CSS-in-JS React App with Styled Components and Priceline Design System](https://steemit.com/utopian-io/@creatrixity/pt-1-build-a-css-in-js-react-app-with-styled-components-and-priceline-design-system)
 
-- [Part 2: Build a CSS-in-JS React App with Styled Components and Priceline Design System](https://steemit.com/utopian-io/@creatrixity/part-2-build-a-css-in-js-react-app-with-styled-components-and-priceline-design-system)
+- [Part 2: Build a CSS-in-JS React App with Styled Components and Priceline Design System](https://www.kaymathew.com/posts/pt-2-build-a-css-in-js-react-app-with-styled-components-and-priceline-design-system/)
 
-- [Part 3: Build a CSS-in-JS React App with Styled Components and Priceline Design System](https://steemit.com/utopian-io/@creatrixity/part-3-build-a-css-in-js-react-app-with-styled-components-and-priceline-design-system)
+- [Part 3: Build a CSS-in-JS React App with Styled Components and Priceline Design System](https://www.kaymathew.com/posts/pt-3-build-a-css-in-js-react-app-with-styled-components-and-priceline-design-system/)

@@ -108,8 +108,15 @@ With all our config files ejected, our structure should resemble the below now:
     - build.js
     - start.js
     - test.js
-  - **src/** + App.css + App.js + App.test.js + index.css + index.js + logo.svg + registerServiceWorker.js
-    +package.json
+  - **src/**
+    + App.css 
+    + App.js 
+    + App.test.js 
+    + index.css 
+    + index.js 
+    + logo.svg 
+    + registerServiceWorker.js
+    + package.json
 
 For brevity and ease of understanding, we'll not be using any state management libraries like Redux, Saga or MobX. Let's get `fire-liners` running
 
@@ -293,7 +300,7 @@ const Circle = styled(Box)`
 
 Our `App` class will extend React's component class and in our `render` method, we'll add some markup. Brace up this will be a little interesting. We'll be wrapping our code in a `ThemeProvider`. Theme providers allow us to apply specific defaults and theming to our application. We're wrapping our Header and app code within the `ThemeProvider` component.
 
-```html
+```js
 class App extends React.Component { render() { return (
 <ThemeProvider>
   <div className="App">
@@ -308,7 +315,7 @@ Next up after our header is our list of liners. We'll be using the `Flex` compon
 We utilize responsive font sizes in our `<Text/>` element to make our font sizes 16px, 24px and 32px respectively at small, medium and large breakpoints.
 
 ```js
-;<Flex justify="center" alignItems="center">
+<Flex justify="center" alignItems="center">
   <Box width={[0.9, 0.8, 0.6]} p={3}>
     <Text fontSize={3} mb={3} bold>
       Recent Quotes

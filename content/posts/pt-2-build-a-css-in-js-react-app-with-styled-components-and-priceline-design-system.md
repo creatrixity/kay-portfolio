@@ -392,11 +392,11 @@ const Textarea = styled("textarea")`
 `
 ```
 
-Fire up your browser and head to `http://localhost:300/add` and you should see a screen like the one below.
+Fire up your browser and head to `http://localhost:3000/add` and you should see a screen like the one below.
 
 ![Add Line Screenshot ](https://steemitimages.com/DQmbvMs3kTvFpgYiwMwaxehK8LDaCcN5j1PRTK2h1ZXr3qt/Add-Lines-Shot.png)
 
-Whew, we've covered a lot today. With that done, we are through with this installment.
+Whew! We've covered a lot today. With that done, we are through with this installment.
 
 #### Conclusion
 
@@ -412,4 +412,4 @@ In our next tutorial, we'll setup a proper state management system and we'll act
 
 #### Curriculum
 
-- [Part 1: Build a CSS-in-JS React App with Styled Components and Priceline Design System](https://steemit.com/utopian-io/@creatrixity/pt-1-build-a-css-in-js-react-app-with-styled-components-and-priceline-design-system)
+- [Part 1: Build a CSS-in-JS React App with Styled Components and Priceline Design System](https://www.kaymathew.com/posts/pt-1-build-a-css-in-js-react-app-with-styled-components-and-priceline-design-system/)

@@ -513,17 +513,17 @@ In our next tutorial, we'll explore more advanced performance techniques. We'll 
 
 #### Curriculum
 
-- [Part One: Build a CSS-in-JS App With Styled Components and Priceline Design System](https://steemit.com/utopian-io/@creatrixity/pt-1-build-a-css-in-js-react-app-with-styled-components-and-priceline-design-system)
+- [Part One: Build a CSS-in-JS App With Styled Components and Priceline Design System](https://www.kaymathew.com/posts/pt-1-build-a-css-in-js-react-app-with-styled-components-and-priceline-design-system/)
 
-- [Part Two: Build a CSS-in-JS App With Styled Components and Priceline Design System](https://steemit.com/utopian-io/@creatrixity/part-2-build-a-css-in-js-react-app-with-styled-components-and-priceline-design-system)
+- [Part Two: Build a CSS-in-JS App With Styled Components and Priceline Design System](https://www.kaymathew.com/posts/pt-2-build-a-css-in-js-react-app-with-styled-components-and-priceline-design-system/)
 
-- [Part Three: Build a CSS-in-JS App With Styled Components and Priceline Design System](https://steemit.com/utopian-io/@creatrixity/part-3-build-a-css-in-js-react-app-with-styled-components-and-priceline-design-system)
+- [Part Three: Build a CSS-in-JS App With Styled Components and Priceline Design System](https://www.kaymathew.com/posts/pt-3-build-a-css-in-js-react-app-with-styled-components-and-priceline-design-system/)
 
-- [Part Four: Build a CSS-in-JS App With Styled Components and Priceline Design System](https://steemit.com/utopian-io/@creatrixity/part-4-build-a-css-in-js-react-app-with-styled-components-and-priceline-design-system)
+- [Part Four: Build a CSS-in-JS App With Styled Components and Priceline Design System](https://www.kaymathew.com/posts/pt-4-build-a-css-in-js-react-app-with-styled-components-and-priceline-design-system/)
 
-- [Part Five: Build a CSS-in-JS App With Styled Components and Priceline Design System](https://steemit.com/utopian-io/@creatrixity/part-5-build-a-css-in-js-react-app-with-styled-components-and-priceline-design-system)
+- [Part Five: Build a CSS-in-JS App With Styled Components and Priceline Design System](https://www.kaymathew.com/posts/pt-5-build-a-css-in-js-react-app-with-styled-components-and-priceline-design-system/)
 
-- [Part Six: Build a CSS-in-JS App With Styled Components and Priceline Design System](https://steemit.com/utopian-io/@creatrixity/part-6-build-a-css-in-js-react-app-with-styled-components-and-priceline-design-system)
+- [Part Six: Build a CSS-in-JS App With Styled Components and Priceline Design System](https://www.kaymathew.com/posts/pt-6-build-a-css-in-js-react-app-with-styled-components-and-priceline-design-system/)
 
 ##### Resources
 

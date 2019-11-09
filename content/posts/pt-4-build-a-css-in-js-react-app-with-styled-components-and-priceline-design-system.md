@@ -80,7 +80,7 @@ Welcome back, friend! Last time around, we did a lot of awesome stuff. This time
     - registerServiceWorker.js
   - package.json
 
-[Last time around](https://steemit.com/utopian-io/@creatrixity/pt-1-build-a-css-in-js-react-app-with-styled-components-and-priceline-design-system) we explored many new ideas about state management. We talked about actions, action dispatchers, sagas and a whole lot of new ideas. We also setup our app to start using those concepts. Today, we'll continue applying our knowledge to our application. We'll be adding functionality that allows the creation of new quotes. We'll be visually highlighting the latest quote and we'll also explore local storage as a viable store for our application (for now).
+[Last time around](https://www.kaymathew.com/posts/pt-3-build-a-css-in-js-react-app-with-styled-components-and-priceline-design-system/) we explored many new ideas about state management. We talked about actions, action dispatchers, sagas and a whole lot of new ideas. We also setup our app to start using those concepts. Today, we'll continue applying our knowledge to our application. We'll be adding functionality that allows the creation of new quotes. We'll be visually highlighting the latest quote and we'll also explore local storage as a viable store for our application (for now).
 
 ![The Storage Story](https://preview.ibb.co/ixMvfy/A_Storage_Story.jpg)
 
@@ -504,8 +504,8 @@ In our next tutorial, we'll explore route based filtering from our store.
 
 #### Curriculum
 
-- [Part 1: Build a CSS-in-JS React App with Styled Components and Priceline Design System](https://steemit.com/utopian-io/@creatrixity/pt-1-build-a-css-in-js-react-app-with-styled-components-and-priceline-design-system)
+- [Part 1: Build a CSS-in-JS React App with Styled Components and Priceline Design System](https://www.kaymathew.com/posts/pt-1-build-a-css-in-js-react-app-with-styled-components-and-priceline-design-system/)
 
-- [Part 2: Build a CSS-in-JS React App with Styled Components and Priceline Design System](https://steemit.com/utopian-io/@creatrixity/part-2-build-a-css-in-js-react-app-with-styled-components-and-priceline-design-system)
+- [Part 2: Build a CSS-in-JS React App with Styled Components and Priceline Design System](https://www.kaymathew.com/posts/pt-2-build-a-css-in-js-react-app-with-styled-components-and-priceline-design-system/)
 
-- [Part 3: Build a CSS-in-JS React App with Styled Components and Priceline Design System](https://steemit.com/utopian-io/@creatrixity/part-3-build-a-css-in-js-react-app-with-styled-components-and-priceline-design-system)
+- [Part 3: Build a CSS-in-JS React App with Styled Components and Priceline Design System](https://www.kaymathew.com/posts/pt-3-build-a-css-in-js-react-app-with-styled-components-and-priceline-design-system/)
