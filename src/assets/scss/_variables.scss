@@ -3,27 +3,39 @@
  */
 
 // Colors
-$color-base: #222;
-$color-primary: #5D93FF;
-$color-secondary: #F7A046;
+$dark-jungle-green: #02262b;
+$darker-jungle-green: #022025;
+$rich-green: #022b31;
+$blizzard-blue: #99f0ff;
 
-$color-white: #FFF;
+$color-base: #222;
+$color-primary: $blizzard-blue;
+$color-secondary: $darker-jungle-green;
+
+$color-white: #fff;
 $color-gray: lighten($color-base, 40%);
 $color-gray-border: lighten($color-base, 77%);
 $color-gray-bg: lighten($color-base, 79%);
 
 // Typographic
-$typographic-font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+$typographic-font-family: 'Gill Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu,
+  Cantarell, 'Helvetica Neue', sans-serif;
 
 $typographic-root-font-size: 100;
 $typographic-base-font-size: 16px;
 $typographic-small-font-size: 14px;
 
+$type-scale-1: 5.653rem;
+$type-scale-2: 3.998rem;
+$type-scale-3: 2.827rem;
+$type-scale-4: 1.999rem;
+$type-scale-5: 1.414rem;
+
 $typographic-base-line-height: 1.625;
 
 $typographic-base-font-color: $color-base;
 $typographic-link-p-font-color: $color-primary;
-$typographic-link-s-font-color: $color-secondary;
+$typographic-link-s-font-color: $color-primary;
 
 $typographic-leading: round(16 * ($typographic-root-font-size / 100) * $typographic-base-line-height);
 

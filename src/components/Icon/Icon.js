@@ -6,15 +6,25 @@ type Props = {
   name: string,
   icon: {
     viewBox?: string,
-    path?: string
-  }
+    path?: string,
+  },
 };
 
-const Icon = ({ name, icon }: Props) => (
-  <svg className={styles['icon']} viewBox={icon.viewBox}>
-    <title>{name}</title>
-    <path d={icon.path} />
-  </svg>
-);
+const Icon = ({ name, className, icon, ...props }: Props) => {
+  const pathProps = {
+    ...(typeof icon.path === 'string' ? { d: icon.path } : icon.path),
+  };
+
+  return (
+    <svg className={className} viewBox={icon.viewBox} {...props}>
+      <title>{name}</title>
+      <path {...pathProps} />
+    </svg>
+  );
+};
+
+Icon.defaultProps = {
+  className: styles['icon'],
+};
 
 export default Icon;

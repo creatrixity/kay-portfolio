@@ -12,13 +12,25 @@ module.exports = {
   useKatex: false,
   menu: [
     {
-      label: 'Articles',
-      path: '/'
+      label: 'Home',
+      path: '/',
     },
     {
-      label: 'About me',
-      path: '/about'
-    }
+      label: 'About',
+      path: '/#about',
+    },
+    {
+      label: 'Skills',
+      path: '/#skills',
+    },
+    {
+      label: 'Experience',
+      path: '/#experience',
+    },
+    {
+      label: 'Contact',
+      path: '/#contact',
+    },
   ],
   author: {
     name: 'Caleb "Kay" Mathew',
@@ -30,7 +42,7 @@ module.exports = {
       email: 'kay@kaymathew.com',
       twitter: '@creatrixity',
       github: 'creatrixity',
-      linkedin: 'creatrixity'
-    }
-  }
+      linkedin: 'creatrixity',
+    },
+  },
 };
