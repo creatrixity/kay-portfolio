@@ -1,7 +1,7 @@
 // @flow strict
-import React from 'react';
+import React, { useRef } from 'react';
 import cx from 'classnames';
-import { useSiteMetadata } from '../../hooks';
+import { useSiteMetadata, useIntersectionObserver } from '../../hooks';
 import { getIcon } from '../../utils';
 import Icon from '../Icon/Icon';
 import styles from './Landing.module.scss';
@@ -15,13 +15,15 @@ type Props = {
   },
 };
 
-const Header = () => {
-  const { menu } = useSiteMetadata();
+const Header = ({ animateLinksIn }) => {
+  const {
+    menu,
+    author: { resumeUrl },
+  } = useSiteMetadata();
 
   return (
     <section className={styles.landing__header}>
       <Icon
-        useDefaultStyles={false}
         name="caret"
         icon={getIcon('logo')}
         width="59"
@@ -31,8 +33,14 @@ const Header = () => {
       />
 
       <section>
-        <NavList navItems={menu} animateLinksIn={true} />
-        <a className="btn-primary animate__fadeInDown animate__animated animate__delay-5s">My Resume</a>
+        <NavList navItems={menu} animateLinksIn={animateLinksIn} />
+        <a
+          href={resumeUrl}
+          target="_blank"
+          className="btn-primary animate__fadeInDown animate__animated animate__delay-5s"
+        >
+          My Resume
+        </a>
       </section>
     </section>
   );

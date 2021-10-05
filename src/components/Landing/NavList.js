@@ -24,7 +24,6 @@ const NavList = ({ navItems, animateLinksIn }: Props) =>
           <li key={label} className={cx(styles.NavList__item, { [animateClasses]: animateLinksIn })}>
             <a className={styles.NavList__link} href={path}>
               <Icon
-                useDefaultStyles={false}
                 name="caret"
                 icon={getIcon('caretRight')}
                 width="11"

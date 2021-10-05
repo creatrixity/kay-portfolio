@@ -7,7 +7,7 @@
     "es6": true,
     "jest/globals": true
   },
-  "plugins": ["react", "jest", "jsx-a11y", "import", "prettier"],
+  "plugins": ["prettier", "react", "jest", "jsx-a11y", "import"],
   "globals": {
     "graphql": true
   },

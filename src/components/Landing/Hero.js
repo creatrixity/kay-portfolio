@@ -1,37 +1,68 @@
 // @flow strict
-import React from 'react';
+import React, { useRef } from 'react';
 import cx from 'classnames';
+import { useIntersectionObserver } from '../../hooks';
 import styles from './Landing.module.scss';
+import Header from './Header';
 
 type Props = {
   children: React.ReactChildren,
 };
 
-const Hero = ({ children }: Props) => (
-  <section className={styles.landing__hero}>
-    {children}
-    <section className={styles.Hero__container}>
-      <p className={cx([styles.Hero__text, 'animate__fadeInUp animate__animated animate__delay-3s'])}>Hello pardner,</p>
-      <hgroup className={styles.Hero__headingGroup}>
-        <h1 className={cx([styles.Hero__title, 'animate__fadeInUp animate__animated animate__delay-4s'])}>
-          I’m Caleb Mathew.
-        </h1>
-        <h2 className={cx([styles.Hero__subtitle, 'animate__fadeInUp animate__animated animate__delay-4s'])}>
-          I help improve mankind’s greatest invention.
-        </h2>
-      </hgroup>
-      <p className={cx([styles.Hero__intro, 'animate__fadeInUp animate__animated animate__delay-5s'])}>
-        I’m a software engineer that enjoys designing and building helpful products. My current adventure is building
-        financial products at{' '}
-        <a className="with-underline" href="#">
-          Kudi
+const Hero = ({ children }: Props) => {
+  const heroRef = useRef();
+  const entry = useIntersectionObserver(heroRef, { freezeOnceVisible: false });
+  const animateHeroTextIn = !!entry?.isIntersecting;
+
+  return (
+    <section className={styles.landing__hero}>
+      <Header animateLinksIn={animateHeroTextIn} />
+
+      <section className={cx([styles.container, styles['container--fullHeight']])} ref={heroRef}>
+        <p
+          className={cx([
+            styles.Hero__text,
+            { 'animate__fadeInUp animate__animated animate__delay-3s': animateHeroTextIn },
+          ])}
+        >
+          Hello pardner,
+        </p>
+        <hgroup className={styles.Hero__headingGroup}>
+          <h1
+            className={cx([
+              styles.Hero__title,
+              { 'animate__fadeInUp animate__animated animate__delay-4s': animateHeroTextIn },
+            ])}
+          >
+            I’m Caleb Mathew.
+          </h1>
+          <h2
+            className={cx([
+              styles.Hero__subtitle,
+              { 'animate__fadeInUp animate__animated animate__delay-4s': animateHeroTextIn },
+            ])}
+          >
+            I help improve mankind’s greatest invention.
+          </h2>
+        </hgroup>
+        <p
+          className={cx([
+            styles.Hero__intro,
+            { 'animate__fadeInUp animate__animated animate__delay-5s': animateHeroTextIn },
+          ])}
+        >
+          I’m a software engineer that enjoys designing and building helpful products. My current adventure is building
+          financial products at{' '}
+          <a className="with-underline" href="#">
+            Kudi
+          </a>
+        </p>
+        <a className="btn-primary btn-primary--xxl animate__fadeInUp animate__animated animate__delay-5s">
+          See my articles
         </a>
-      </p>
-      <a className="btn-primary btn-primary--xxl animate__fadeInUp animate__animated animate__delay-5s">
-        See my articles
-      </a>
+      </section>
     </section>
-  </section>
-);
+  );
+};
 
 export default Hero;

@@ -35,6 +35,7 @@ module.exports = {
   author: {
     name: 'Caleb "Kay" Mathew',
     photo: '/photo.jpg',
+    resumeUrl: 'https://docs.google.com/document/d/1T861s71C4eXj0rjKwumr2G84uAog7m9f5CaQ1spF3EY/edit?usp=sharing',
     bio:
       // eslint-disable-next-line quotes
       `Hi there! I'm a Nigerian software engineer obsessed with building better experiences for users one keystroke at a time.`,

@@ -1,7 +1,7 @@
 // @flow strict
 import React from 'react';
 import Hero from './Hero';
-import Header from './Header';
+import About from './About';
 import styles from './Landing.module.scss';
 
 type Props = {
@@ -14,9 +14,8 @@ type Props = {
 
 const Landing = () => (
   <section className={styles.landing}>
-    <Hero>
-      <Header />
-    </Hero>
+    <Hero />
+    <About />
   </section>
 );
 
