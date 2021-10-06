@@ -17,6 +17,7 @@ type Props = {};
 
 const EntryCard = (props: Props) => {
   const { label, slug, selected, onSelectEntry, idx, animateCard, children } = props;
+
   const animateClasses = `animate__fadeInUp animate__animated animate__delay-${idx}s`;
 
   return (

@@ -3,6 +3,8 @@ import React from 'react';
 import Hero from './Hero';
 import About from './About';
 import Skills from './Skills';
+import Stints from './Stints';
+import Contact from './Contact';
 import styles from './Landing.module.scss';
 
 type Props = {
@@ -18,6 +20,8 @@ const Landing = () => (
     <Hero />
     <About />
     <Skills />
+    <Stints />
+    <Contact />
   </section>
 );
 

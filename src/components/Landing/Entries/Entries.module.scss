@@ -20,12 +20,17 @@
     border-color: transparent;
   }
 
+  &__radio:checked + & .EntryCard__title,
+  &:hover .EntryCard__title {
+    color: #fff;
+  }
+
   &__radio {
     opacity: 0;
   }
 
   &__title {
-    color: rgba(255, 255, 255, 1);
+    color: rgba(255, 255, 255, 0.64);
     margin: 0 0 1rem;
   }
 

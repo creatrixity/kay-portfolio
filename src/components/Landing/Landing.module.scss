@@ -19,7 +19,8 @@
     width: 150;
   }
 
-  &__About {
+  &__About,
+  &__Contact {
     display: flex;
     align-items: center;
     height: 100%;
@@ -123,12 +124,13 @@
   }
 }
 
-.Skills {
+.Contact {
   background: $color-secondary;
 
   &__title {
     color: #fff;
     margin-bottom: 4rem;
+    text-align: right;
 
     &::before {
       content: attr(data-label);
@@ -140,14 +142,15 @@
   }
 
   &__intro {
-    color: rgba(255, 255, 255, 0.64);
-    font-size: $type-scale-5;
-    line-height: $type-scale-4;
+    color: rgba(255, 255, 255, 0.36);
+    font-size: $type-scale-3;
+    line-height: $type-scale-2;
     width: 70%;
   }
 }
 
-.Skills {
+.Skills,
+.Stints {
   display: flex;
 
   &__title {
@@ -206,11 +209,19 @@
     align-items: center;
 
     &__title {
+      opacity: 0;
       color: rgba(255, 255, 255, 0.48);
       color: rgba(0, 0, 0, 0.81);
     }
 
+    &__subtitle {
+      opacity: 0;
+      font-weight: bold;
+      text-align: right;
+    }
+
     &__desc {
+      opacity: 0;
       color: rgba(255, 255, 255, 0.64);
       line-height: $type-scale-3;
       font-size: $type-scale-4;
@@ -236,5 +247,11 @@
     &__rust {
       background-color: #99f1ff;
     }
+  }
+}
+
+.Stints {
+  &__icon {
+    max-width: 150px;
   }
 }

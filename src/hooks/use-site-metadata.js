@@ -29,6 +29,13 @@ const useSiteMetadata = () => {
               slug
               description
             }
+            stints {
+              label
+              designation
+              slug
+              epoch
+              highlights
+            }
             url
             title
             subtitle

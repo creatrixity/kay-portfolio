@@ -7,6 +7,7 @@ import styles from './Landing.module.scss';
 import Entries from './Entries/Entries';
 import EntryCard from './Entries/EntryCard';
 import Icon from '../Icon/Icon';
+import SkillDetail from './SkillDetail';
 
 type Props = {
   children: React.ReactChildren,
@@ -70,24 +71,14 @@ const Skills = ({ children }: Props) => {
           }}
         >
           {skills.map(({ label, title, description, slug }, idx) => (
-            <section
-              className={cx([
-                styles.Skills__detail,
-                styles[`Skills__detail__${slug}`],
-                {
-                  [styles.Skills__detailSelected]: selectedSkill.skill === slug,
-                },
-              ])}
-              style={{
-                left: `${idx * 100}%`,
-              }}
-            >
-              <div className={cx([styles.Skills__stuff])}>
-                <p>About {label}</p>
-                <h2 className={cx([styles.Skills__detail__title])}>{title}</h2>
-                <p className={cx([styles.Skills__detail__desc])}>{description}</p>
-              </div>
-            </section>
+            <SkillDetail
+              slug={slug}
+              selectedSkill={selectedSkill.skill}
+              idx={idx}
+              label={label}
+              title={title}
+              description={description}
+            />
           ))}
         </section>
       </div>
