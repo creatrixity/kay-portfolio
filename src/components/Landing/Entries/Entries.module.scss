@@ -1,0 +1,35 @@
+@import '../../../assets/scss/variables';
+
+.Entries {
+  width: 100%;
+}
+
+.EntryCard {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  margin-bottom: 2rem;
+  border-radius: 1rem;
+  width: 100%;
+  padding: 1rem 2rem;
+
+  &__radio:checked + &,
+  &:hover {
+    background: rgba(0, 0, 0, 0.16);
+    border-color: transparent;
+  }
+
+  &__radio {
+    opacity: 0;
+  }
+
+  &__title {
+    color: rgba(255, 255, 255, 1);
+    margin: 0 0 1rem;
+  }
+
+  &__link {
+    color: $color-primary;
+  }
+}

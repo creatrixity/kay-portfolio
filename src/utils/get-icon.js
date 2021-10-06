@@ -15,6 +15,7 @@ const getIcon = (name: string) => {
     linkedin: ICONS.LINKEDIN,
     caretRight: ICONS.CARET_RIGHT,
     logo: ICONS.LOGO,
+    rustLogo: ICONS.RUST_LOGO,
   };
 
   return name in iconsMap ? iconsMap[name] : iconsMap['twitter'];

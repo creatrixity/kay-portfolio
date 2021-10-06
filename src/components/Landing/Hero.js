@@ -11,7 +11,7 @@ type Props = {
 
 const Hero = ({ children }: Props) => {
   const heroRef = useRef();
-  const entry = useIntersectionObserver(heroRef, { freezeOnceVisible: false });
+  const entry = useIntersectionObserver(heroRef, { freezeOnceVisible: true });
   const animateHeroTextIn = !!entry?.isIntersecting;
 
   return (
@@ -22,7 +22,7 @@ const Hero = ({ children }: Props) => {
         <p
           className={cx([
             styles.Hero__text,
-            { 'animate__fadeInUp animate__animated animate__delay-3s': animateHeroTextIn },
+            { 'animate__fadeInUp animate__animated animate__delay-4s': animateHeroTextIn },
           ])}
         >
           Hello pardner,
@@ -31,7 +31,7 @@ const Hero = ({ children }: Props) => {
           <h1
             className={cx([
               styles.Hero__title,
-              { 'animate__fadeInUp animate__animated animate__delay-4s': animateHeroTextIn },
+              { 'animate__fadeInUp animate__animated animate__delay-5s': animateHeroTextIn },
             ])}
           >
             I’m Caleb Mathew.
@@ -39,7 +39,7 @@ const Hero = ({ children }: Props) => {
           <h2
             className={cx([
               styles.Hero__subtitle,
-              { 'animate__fadeInUp animate__animated animate__delay-4s': animateHeroTextIn },
+              { 'animate__fadeInUp animate__animated animate__delay-5s': animateHeroTextIn },
             ])}
           >
             I help improve mankind’s greatest invention.

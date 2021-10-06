@@ -29,7 +29,7 @@ const Header = ({ animateLinksIn }) => {
         width="59"
         height="40"
         fill="none"
-        className={cx([styles.landing__logo, 'animate__fadeInDown animate__animated animate__delay-1s'])}
+        className={cx([styles.landing__logo, 'animate__fadeIn animate__animated'])}
       />
 
       <section>

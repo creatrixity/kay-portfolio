@@ -19,7 +19,7 @@ const NavList = ({ navItems, animateLinksIn }: Props) =>
   navItems.length ? (
     <ul className={styles.NavList}>
       {navItems.map(({ label, path }: NavItem, idx) => {
-        const animateClasses = `animate__fadeInDown animate__animated animate__delay-${idx + 1}s`;
+        const animateClasses = `animate__fadeInDown animate__animated animate__delay-${idx - 1}s`;
         return (
           <li key={label} className={cx(styles.NavList__item, { [animateClasses]: animateLinksIn })}>
             <a className={styles.NavList__link} href={path}>

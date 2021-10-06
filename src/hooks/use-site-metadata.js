@@ -23,6 +23,12 @@ const useSiteMetadata = () => {
               label
               path
             }
+            skills {
+              label
+              title
+              slug
+              description
+            }
             url
             title
             subtitle

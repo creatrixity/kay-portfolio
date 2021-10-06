@@ -10,6 +10,47 @@ module.exports = {
   postsPerPage: 4,
   googleAnalyticsId: 'UA-73379983-2',
   useKatex: false,
+  skills: [
+    {
+      label: 'JavaScript',
+      slug: 'javascript',
+      title: 'The Swiss Army knife of software development.',
+      description:
+        'This incredibly important little buddy allows me to do everything from crafting experiences and defining behavior for the web to writing and running interactive servers.',
+    },
+    {
+      label: 'React',
+      slug: 'react',
+      title: 'The Super Renderer.',
+      description:
+        'This fantastic piece of technology allows me to build snappy and interactive user interfaces (UI). Its declarative nature means I can just specify what to expect without having to fiddle with the underbelly of the beast (DOM management)',
+    },
+    {
+      label: 'Node.js',
+      slug: 'nodejs',
+      title: 'The V6 engine.',
+      description: 'Allows me to spin up servers that can handle a crazy amount of requests at the same damn time.',
+    },
+    {
+      label: 'Typescript',
+      slug: 'typescript',
+      title: "What's life without safety?",
+      description:
+        'If JavaScript is a raging bull then TypeScript is its Matador. This allows me to introduce a little sanity to JavaScript by way of type safety.',
+    },
+    {
+      label: 'Python',
+      slug: 'python',
+      title: 'An early love.',
+      description: 'Allows me to work with data easily and make it available on the web.',
+    },
+    {
+      label: 'Rust',
+      slug: 'rust',
+      title: 'Pedal to bare metal',
+      description: 'Highly performant systems language that allows me to write truly error-free memory-safe code',
+    },
+  ],
   menu: [
     {
       label: 'Home',
