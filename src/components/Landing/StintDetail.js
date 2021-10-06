@@ -31,12 +31,37 @@ const StintDetail = ({ slug, selected, idx, label, epoch, designation, highlight
           <h2 className={cx([styles.Stints__detail__title, { [animateClasses]: animateDetail }])}>{label}</h2>
           <h3 className={cx([styles.Stints__detail__desc, { [animateClasses]: animateDetail }])}>{designation}</h3>
         </hgroup>
-        <time>{epoch}</time>
+        <time
+          className={cx([styles.Stints__detail__epoch], {
+            [`${animateClasses} animate__delay-1s`]: animateDetail,
+          })}
+        >
+          {epoch}
+        </time>
 
         {highlights.length ? (
-          <ul>
-            {highlights.map((highlight) => {
-              return <li key={highlight}>{highlight}</li>;
+          <ul className={cx([styles.Stints__detail__highlights, { [animateClasses]: animateDetail }])}>
+            {highlights.map((highlight, idx) => {
+              return (
+                <li
+                  key={highlight}
+                  className={cx([
+                    styles.Stints__detail__highlight,
+                    { [`${animateClasses} animate__delay-${idx + 1}s`]: animateDetail },
+                  ])}
+                >
+                  <Icon
+                    name="caret"
+                    icon={getIcon('caretRight')}
+                    width="24.42"
+                    height="16"
+                    fill="none"
+                    className={cx([styles.Stints__detail__highlight__icon])}
+                  />
+
+                  {highlight}
+                </li>
+              );
             })}
           </ul>
         ) : null}

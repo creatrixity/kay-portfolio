@@ -210,8 +210,6 @@
 
     &__title {
       opacity: 0;
-      color: rgba(255, 255, 255, 0.48);
-      color: rgba(0, 0, 0, 0.81);
     }
 
     &__subtitle {
@@ -253,5 +251,43 @@
 .Stints {
   &__icon {
     max-width: 150px;
+  }
+
+  &__detail {
+    &__title {
+      color: $color-primary;
+      opacity: 0;
+    }
+
+    &__desc {
+      opacity: 0;
+      color: rgba(255, 255, 255, 0.64);
+      font-size: $type-scale-3;
+      font-weight: 600;
+    }
+
+    &__epoch {
+      font-size: $type-scale-4;
+      color: rgba(255, 255, 255, 0.36);
+      opacity: 0;
+    }
+
+    &__highlights {
+      list-style: none;
+      padding: 0;
+    }
+
+    &__highlight {
+      color: rgb(255, 255, 255);
+      padding: 10px;
+      font-size: $type-scale-5;
+      display: flex;
+      align-items: top;
+      opacity: 0;
+    }
+
+    &__highlight__icon {
+      margin: 0.5rem 1rem 0 0;
+    }
   }
 }
