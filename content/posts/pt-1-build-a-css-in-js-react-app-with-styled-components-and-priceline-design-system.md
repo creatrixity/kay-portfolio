@@ -1,15 +1,15 @@
 ---
-title: "Pt 1: Build a CSS-in-JS React App with Styled Components and Priceline Design System"
-date: "2018-05-16T23:46:37.121Z"
-template: "post"
+title: 'Pt 1: Build a CSS-in-JS React App with Styled Components and Priceline Design System'
+date: '2018-05-16T23:46:37.121Z'
+template: 'post'
 draft: false
-slug: "/posts/pt-1-build-a-css-in-js-react-app-with-styled-components-and-priceline-design-system/"
-category: "Front End"
+slug: '/articles/pt-1-build-a-css-in-js-react-app-with-styled-components-and-priceline-design-system/'
+category: 'Front End'
 tags:
-  - "Javascript"
-  - "React"
-description: "As web/mobile application developers and software creators, we are always on the lookout for ways we can improve the performance and quality of the experience of the solutions we architect. On the web, we can enhance the performance of our application as regards loading time by minimizing the number of HTTP requests we make for critical assets. If we can reduce the number of requests for CSS and JavaScript assets our application makes, we get improved load times."
-socialImage: "https://steemitimages.com/256x512/https://steemitimages.com/DQmWywGeRctskP1jnvNAQmsmQyh44uDRHLKSzot46q8SFgE/fireliners-index.png"
+  - 'Javascript'
+  - 'React'
+description: 'As web/mobile application developers and software creators, we are always on the lookout for ways we can improve the performance and quality of the experience of the solutions we architect. On the web, we can enhance the performance of our application as regards loading time by minimizing the number of HTTP requests we make for critical assets. If we can reduce the number of requests for CSS and JavaScript assets our application makes, we get improved load times.'
+socialImage: 'https://steemitimages.com/256x512/https://steemitimages.com/DQmWywGeRctskP1jnvNAQmsmQyh44uDRHLKSzot46q8SFgE/fireliners-index.png'
 ---
 
 As web/mobile application developers and software creators, we are always on the lookout for ways we can improve the performance and quality of the experience of the solutions we architect. On the web, we can enhance the performance of our application as regards loading time by minimizing the number of HTTP requests we make for critical assets. If we can reduce the number of requests for CSS and JavaScript assets our application makes, we get improved load times.
@@ -109,14 +109,14 @@ With all our config files ejected, our structure should resemble the below now:
     - start.js
     - test.js
   - **src/**
-    + App.css 
-    + App.js 
-    + App.test.js 
-    + index.css 
-    + index.js 
-    + logo.svg 
-    + registerServiceWorker.js
-    + package.json
+    - App.css
+    - App.js
+    - App.test.js
+    - index.css
+    - index.js
+    - logo.svg
+    - registerServiceWorker.js
+    - package.json
 
 For brevity and ease of understanding, we'll not be using any state management libraries like Redux, Saga or MobX. Let's get `fire-liners` running
 
@@ -219,43 +219,36 @@ Our new application structure looks like the one below:
     - start.js
     - test.js
   - **src/**
-    - components/ 
-    - Header/ 
+    - components/
+    - Header/
     - index.js
     - logo.svg
-    - containers/ 
-      + App/
-      + App.test.js
-      + index.js
-      + registerServiceWorker.js
-    + package.json
+    - containers/
+      - App/
+      - App.test.js
+      - index.js
+      - registerServiceWorker.js
+    * package.json
 
 We'll have to reflect the changes we made to our application structure within our JavaScript files. In `src/index.js` we change:
 
 ```js
-import App from "./App.js"
+import App from './App.js';
 ```
 
 To this one below
 
 ```js
-import App from "./containers/App"
+import App from './containers/App';
 ```
 
 We'll create `index.js` at `src/containers/App` and add some code. We'll start working with styled components and Priceline's design system. We'll be displaying a list of quotes by hip hop artists. First of all we'll import some modules from `react`, `styled components` and `pcln-design-system`. We'll also import our Header.
 
 ```js
-import React from "react"
-import styled from "styled-components"
-import {
-  Box,
-  BlockLink,
-  Flex,
-  Link,
-  Text,
-  ThemeProvider,
-} from "pcln-design-system"
-import Header from "../../components/Header"
+import React from 'react';
+import styled from 'styled-components';
+import { Box, BlockLink, Flex, Link, Text, ThemeProvider } from 'pcln-design-system';
+import Header from '../../components/Header';
 ```
 
 We'll hard code some liners. These will mimic the data we'll be fetching in subsequent installments from our server.
@@ -264,27 +257,25 @@ We'll hard code some liners. These will mimic the data we'll be fetching in subs
 const liners = [
   {
     id: 1,
-    author: "Immortal Technique",
-    government_name: "Felipe Andres Coronel",
-    body:
-      "The purpose of life is a life with a purpose. Rather die for what I believe in than live a life that is worthless.",
-    photo: "immortal-technique.jpg",
+    author: 'Immortal Technique',
+    government_name: 'Felipe Andres Coronel',
+    body: 'The purpose of life is a life with a purpose. Rather die for what I believe in than live a life that is worthless.',
+    photo: 'immortal-technique.jpg',
   },
   {
     id: 2,
-    author: "Eminem",
-    government_name: "Marshall Mathers",
+    author: 'Eminem',
+    government_name: 'Marshall Mathers',
     body: "I don't rap for dead presidents. I'd rather see the president dead.",
-    photo: "eminem.jpg",
+    photo: 'eminem.jpg',
   },
   {
     id: 3,
-    author: "Andre 3000",
-    body:
-      "Hell just fell, 3000 more degrees, cooler, but y'all can't measure my worth; and before you do, you'll need a ruler made by all the Greek gods.",
-    photo: "andre-3k.jpg",
+    author: 'Andre 3000',
+    body: "Hell just fell, 3000 more degrees, cooler, but y'all can't measure my worth; and before you do, you'll need a ruler made by all the Greek gods.",
+    photo: 'andre-3k.jpg',
   },
-]
+];
 ```
 
 We'll create a `Circle` micro-component to serve as a placeholder for images we'll load in the future. This circle will extend the Box base (from styled system) and add some niceties like border radius.
@@ -295,19 +286,23 @@ const Circle = styled(Box)`
   width: 60px;
   height: 60px;
   display: inline-block;
-`
+`;
 ```
 
 Our `App` class will extend React's component class and in our `render` method, we'll add some markup. Brace up this will be a little interesting. We'll be wrapping our code in a `ThemeProvider`. Theme providers allow us to apply specific defaults and theming to our application. We're wrapping our Header and app code within the `ThemeProvider` component.
 
 ```js
-class App extends React.Component { render() { return (
-<ThemeProvider>
-  <div className="App">
-    <header />
-  </div>
-</ThemeProvider>
-); } }
+class App extends React.Component {
+  render() {
+    return (
+      <ThemeProvider>
+        <div className="App">
+          <header />
+        </div>
+      </ThemeProvider>
+    );
+  }
+}
 ```
 
 Next up after our header is our list of liners. We'll be using the `Flex` component to layout our elements. We'll also use the `Box` component (the base of the circle component earlier). We're leveraging responsive width parameters to set the width of the box to 90% at the "small breakpoint", 80% at "medium" and 60% at "large". We loop through our liners with `liners.map(liner => {...})` and then we setup some more elements.
@@ -320,9 +315,9 @@ We utilize responsive font sizes in our `<Text/>` element to make our font sizes
     <Text fontSize={3} mb={3} bold>
       Recent Quotes
     </Text>
-    {liners.map(liner => (
-      <BlockLink href={"/liners/" + liner.id}>
-        <Flex bg="lightGray" style={{ borderRadius: "4px" }} p={3} mb={3}>
+    {liners.map((liner) => (
+      <BlockLink href={'/liners/' + liner.id}>
+        <Flex bg="lightGray" style={{ borderRadius: '4px' }} p={3} mb={3}>
           <Flex width={[0.5, 0.7, 0.2]}>
             <Circle bg="gray" mr={5}></Circle>
           </Flex>
@@ -330,7 +325,7 @@ We utilize responsive font sizes in our `<Text/>` element to make our font sizes
             <Text mb={3} width={1} italic fontSize={[1, 2, 3]}>
               {liner.body}
             </Text>
-            <Link href={"/authors/" + liner.author}>
+            <Link href={'/authors/' + liner.author}>
               <Text fontSize={1} mb={3} color="gray" align="right" bold>
                 {liner.author}
               </Text>
@@ -340,44 +335,44 @@ We utilize responsive font sizes in our `<Text/>` element to make our font sizes
       </BlockLink>
     ))}
   </Box>
-</Flex>
+</Flex>;
 
-export default App
+export default App;
 ```
 
 Next, we'll work on our Header component. Create an `index.js` file at `src/components/Header` and add some code to it. We will use some Priceline components to get better.
 
 ```js
-import React from "react"
-import { Button, Icon, IconButton, Flex, Link, Text } from "pcln-design-system"
+import React from 'react';
+import { Button, Icon, IconButton, Flex, Link, Text } from 'pcln-design-system';
 ```
 
 Next, we'll define a `MenuButton` component for our header. This will simply display a menu button.
 
 ```js
-const MenuButton = props => (
+const MenuButton = (props) => (
   <Flex width={1 / 3} align="center">
     <IconButton name="menu" />
   </Flex>
-)
+);
 ```
 
 Next, we display the brand in the middle of the header. For now, this will just be text.
 
 ```js
-const Brand = props => (
+const Brand = (props) => (
   <Flex width={1 / 3} justify="center" align="center">
     <Link href="http://a.t">
       <Text color="black">FireLiners</Text>
     </Link>
   </Flex>
-)
+);
 ```
 
 Our third header component is a component that simply provides an add line button.
 
 ```js
-const AddLineButton = props => (
+const AddLineButton = (props) => (
   <Flex width={1 / 3} justify="right">
     <Button radius={15} size="small">
       <Flex>
@@ -386,13 +381,13 @@ const AddLineButton = props => (
       </Flex>
     </Button>
   </Flex>
-)
+);
 ```
 
 Finally, we bring them all together in our `Header` class.
 
 ```js
-const Header = props => (
+const Header = (props) => (
   <Flex className="App-header" mb={3} justify="center" bg="yellow">
     <Flex width={[0.9, 0.8, 0.6]}>
       <MenuButton />
@@ -400,9 +395,9 @@ const Header = props => (
       <AddLineButton />
     </Flex>
   </Flex>
-)
+);
 
-export default Header
+export default Header;
 ```
 
 Great! Let's run

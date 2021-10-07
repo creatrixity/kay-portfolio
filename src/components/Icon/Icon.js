@@ -18,7 +18,11 @@ const Icon = ({ name, className, icon, ...props }: Props) => {
   return (
     <svg className={className} viewBox={icon.viewBox} {...props}>
       <title>{name}</title>
-      <path {...pathProps} />
+      {Array.isArray(icon.path) ? (
+        icon.path.map((pathProps) => <path key={pathProps.d} {...pathProps} />)
+      ) : (
+        <path {...pathProps} />
+      )}
     </svg>
   );
 };

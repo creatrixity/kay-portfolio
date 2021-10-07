@@ -3,7 +3,7 @@ title: "Pt 2: Build a CSS-in-JS React App with Styled Components and Priceline D
 date: "2018-05-18T23:46:37.121Z"
 template: "post"
 draft: false
-slug: "/posts/pt-2-build-a-css-in-js-react-app-with-styled-components-and-priceline-design-system/"
+slug: "/articles/pt-2-build-a-css-in-js-react-app-with-styled-components-and-priceline-design-system/"
 category: "Front End"
 tags:
   - "Javascript"
@@ -131,22 +131,22 @@ As you can see, we added the `screens` directory to house our screens. Screens c
 Next, we'll refactor our `src/containers/App`. We'll be adding our routes here. We'll also be using `react-loadable` to lazy load our routes. We first start by importing our dependencies. We import the `Router` and `Route`. We also import the loading screen we'll be working on soon.
 
 ```js
-import React from "react"
-import Loadable from "react-loadable"
-import { BrowserRouter as Router, Route } from "react-router-dom"
-import { ThemeProvider, Flex } from "pcln-design-system"
-import Header from "../../components/Header"
-import AppLoadingScreen from "../../screens/Loading"
+import React from 'react';
+import Loadable from 'react-loadable';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { ThemeProvider, Flex } from 'pcln-design-system';
+import Header from '../../components/Header';
+import AppLoadingScreen from '../../screens/Loading';
 ```
 
 We now have to import the `Home` screen and make a lazy loaded component out of it as that's the first screen our users get to see. We'll be using two React components that we're yet to create (`HomeScreen` and `AppLoadingScreen`). We'll also be setting a maximum delay of 200 miliseconds on the request within which a user may retry the request.
 
 ```js
 const LoadableHomeScreen = Loadable({
-  loader: () => import("../../screens/Home"),
+  loader: () => import('../../screens/Home'),
   loading: AppLoadingScreen,
   delay: 200,
-})
+});
 ```
 
 Then we update our `App` class. We make sure to use a flex container that covers the whole screen. In our `Router` component, we pass `LoadableHomeScreen` to respond to requests to the `/` route.
@@ -156,18 +156,14 @@ class App extends React.Component {
   render() {
     return (
       <ThemeProvider>
-        <Flex
-          flexDirection="column"
-          className="App"
-          style={{ minHeight: "100vh" }}
-        >
+        <Flex flexDirection="column" className="App" style={{ minHeight: '100vh' }}>
           <Header />
           <Router>
             <Route exact path="/" component={LoadableHomeScreen} />
           </Router>
         </Flex>
       </ThemeProvider>
-    )
+    );
   }
 }
 ```
@@ -175,16 +171,16 @@ class App extends React.Component {
 We'll move some of our previous code to the home screen component. Edit `src/screens/Home/index.js` and add these dependencies.
 
 ```js
-import React, { Component } from "react"
-import styled from "styled-components"
-import { Box, Flex, Link, Text } from "pcln-design-system"
+import React, { Component } from 'react';
+import styled from 'styled-components';
+import { Box, Flex, Link, Text } from 'pcln-design-system';
 
 const Circle = styled(Box)`
   border-radius: 100%;
   width: 60px;
   height: 60px;
   display: inline-block;
-`
+`;
 ```
 
 We then simply move our old code that used to live in the `App` component to the `render` method.
@@ -198,9 +194,9 @@ class Home extends Component {
           <Text fontSize={3} mb={3} bold>
             Recent Quotes
           </Text>
-          {liners.map(liner => (
+          {liners.map((liner) => (
             <Box key={liner.id}>
-              <Flex bg="lightGray" style={{ borderRadius: "4px" }} p={3} mb={3}>
+              <Flex bg="lightGray" style={{ borderRadius: '4px' }} p={3} mb={3}>
                 <Flex width={[0.5, 0.7, 0.2]}>
                   <Circle bg="gray" mr={5}></Circle>
                 </Flex>
@@ -208,7 +204,7 @@ class Home extends Component {
                   <Text mb={3} width={1} italic fontSize={[1, 2, 3]}>
                     {liner.body}
                   </Text>
-                  <Link href={"/authors/" + liner.author}>
+                  <Link href={'/authors/' + liner.author}>
                     <Text fontSize={1} mb={3} color="gray" align="right" bold>
                       {liner.author}
                     </Text>
@@ -219,27 +215,27 @@ class Home extends Component {
           ))}
         </Box>
       </Flex>
-    )
+    );
   }
 }
 
-export default Home
+export default Home;
 ```
 
 Let's create a loading screen that we'll be reusing through out the app. Edit `src/screens/Loading/index.js` and add some code. We'll be displaying a simple message on a light yellow background. In the future we could have something more elaborate.
 
 ```js
-import React from "react"
-import { Flex, Text } from "pcln-design-system"
+import React from 'react';
+import { Flex, Text } from 'pcln-design-system';
 
-const AppLoadingScreen = props => (
+const AppLoadingScreen = (props) => (
   <Flex
     style={{
-      height: "100vh",
-      position: "fixed",
+      height: '100vh',
+      position: 'fixed',
       top: 0,
       bottom: 0,
-      width: "100%",
+      width: '100%',
     }}
     bg="lightYellow"
     flexDirection="column"
@@ -248,9 +244,9 @@ const AppLoadingScreen = props => (
   >
     <Text bold>Whipping up Awesomeness...</Text>
   </Flex>
-)
+);
 
-export default AppLoadingScreen
+export default AppLoadingScreen;
 ```
 
 If we save and refresh our browser, we get a loading screen before our app comes up, so we know we've successfully lazy loaded our `Home` component. Let's hop over to the developer panel in the Chrome browser by pressing `F12` on your keyboard and we'll switch to the network tab. We should see the below screen indicating that we made three requests for JS resources (`app.bundle.js`, `vendor.bundle.js` and `2.js`). Inspecting `2.js` closely, we see that it contains the home component separated from the other code.
@@ -260,9 +256,9 @@ If we save and refresh our browser, we get a loading screen before our app comes
 Let's apply what we learnt to the `AddLineScreen` we'll be creating soon. Create `src/screens/AddLine/index.js` and we'll add some code to it. We're leveraging the idea of responsive sizes for our `Flex` element. We're displaying a simple form with an input field and a text area. Our `Textarea` component doesn't exist yet, we'll create it as a custom component soon.
 
 ```js
-import React, { Component } from "react"
-import { Box, Flex, Input, Label, RedButton, Text } from "pcln-design-system"
-import Textarea from "../../components/Form/Textarea"
+import React, { Component } from 'react';
+import { Box, Flex, Input, Label, RedButton, Text } from 'pcln-design-system';
+import Textarea from '../../components/Form/Textarea';
 
 class AddLine extends Component {
   render() {
@@ -280,47 +276,44 @@ class AddLine extends Component {
 
             <Flex flexDirection="column" mb={3}>
               <Label mb={2}>Lyrics</Label>
-              <Textarea
-                rows={7}
-                placeholder="Spit that line here, dawg..."
-              ></Textarea>
+              <Textarea rows={7} placeholder="Spit that line here, dawg..."></Textarea>
             </Flex>
           </Box>
           <RedButton>Save and go back</RedButton>
         </Flex>
       </Flex>
-    )
+    );
   }
 }
 
-export default AddLine
+export default AddLine;
 ```
 
 Since we have more than two routes to deal with now, we better refactor our code or React will scream at us. Open up `src/index.js` and set it up to wrap our root `App` component in the React router.
 
 ```js
-import React from "react"
-import ReactDOM from "react-dom"
-import { BrowserRouter as Router } from "react-router-dom"
-import App from "./containers/App"
-import registerServiceWorker from "./registerServiceWorker"
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { BrowserRouter as Router } from 'react-router-dom';
+import App from './containers/App';
+import registerServiceWorker from './registerServiceWorker';
 
 ReactDOM.render(
   <Router>
     <App />
   </Router>,
-  document.getElementById("root")
-)
+  document.getElementById('root')
+);
 ```
 
 Next, we'll add the `AddLine` component as a lazy loadable component in `src/containers/App/index`.
 
 ```js
 const LoadableAddLineScreen = Loadable({
-  loader: () => import("../../screens/AddLine"),
+  loader: () => import('../../screens/AddLine'),
   loading: AppLoadingScreen,
   delay: 200,
-})
+});
 ```
 
 In the `render` method of the `App` class, we'll register the route
@@ -334,44 +327,44 @@ In the `render` method of the `App` class, we'll register the route
 In our `AddLine` class, we imported the `Textarea` class which we are yet to create. Let's handle that now. Create `src/components/Form/Textarea.js` and we'll get started. First, we import our dependencies. We are using the `space` and `theme` methods from styled system. This will give us access to the default spacings and theme setting that come with styled system.
 
 ```js
-import React from "react"
-import styled from "styled-components"
-import { space, theme } from "styled-system"
+import React from 'react';
+import styled from 'styled-components';
+import { space, theme } from 'styled-system';
 ```
 
 Next, we do something of great importance, we define a function that returns the styles for the borders that will surround our Text box. This function also accepts the `color` and `theme` objects and makes them accessible to us. We also write code that provide defaults in the event that the function received no arguments. We then return an object with our styles intact.
 
 ```js
 const borders = ({ color, theme }) => {
-  const borderColor = color ? theme.colors[color] : theme.colors.borderGray
-  const focusColor = color ? borderColor : theme.colors.gray
+  const borderColor = color ? theme.colors[color] : theme.colors.borderGray;
+  const focusColor = color ? borderColor : theme.colors.gray;
   return {
-    "border-color": borderColor,
-    "box-shadow": `0 0 0 1px ${borderColor}`,
-    ":focus": {
+    'border-color': borderColor,
+    'box-shadow': `0 0 0 1px ${borderColor}`,
+    ':focus': {
       outline: 0,
-      "border-color": focusColor,
-      "box-shadow": `0 0 0 2px ${focusColor}`,
+      'border-color': focusColor,
+      'box-shadow': `0 0 0 2px ${focusColor}`,
     },
-  }
-}
+  };
+};
 ```
 
 Next, we define the styles for our Textarea in a new ES6 proposal called 'tagged template literals'. We write regular CSS here except for the `theme` function calls. Calling the `theme` method with an argument here will return a value.
 
 ```js
-const Textarea = styled("textarea")`
+const Textarea = styled('textarea')`
   appearance: none;
   display: block;
   width: 100%;
   font-family: inherit;
   color: inherit;
-  font-size: ${theme("fontSizes.1")}px;
+  font-size: ${theme('fontSizes.1')}px;
   background-color: transparent;
-  border-radius: ${theme("radius")};
+  border-radius: ${theme('radius')};
   border-width: 0px;
   border-style: solid;
-  border-color: ${theme("colors.borderGray")};
+  border-color: ${theme('colors.borderGray')};
 
   padding-top: 14px;
   padding-bottom: 14px;
@@ -381,7 +374,7 @@ const Textarea = styled("textarea")`
   margin: 0;
 
   ::placeholder {
-    color: ${theme("colors.gray")};
+    color: ${theme('colors.gray')};
   }
 
   ::-ms-clear {
@@ -389,7 +382,7 @@ const Textarea = styled("textarea")`
   }
 
   ${borders} ${space};
-`
+`;
 ```
 
 Fire up your browser and head to `http://localhost:3000/add` and you should see a screen like the one below.
@@ -412,4 +405,4 @@ In our next tutorial, we'll setup a proper state management system and we'll act
 
 #### Curriculum
 
-- [Part 1: Build a CSS-in-JS React App with Styled Components and Priceline Design System](https://www.kaymathew.com/posts/pt-1-build-a-css-in-js-react-app-with-styled-components-and-priceline-design-system/)
+- [Part 1: Build a CSS-in-JS React App with Styled Components and Priceline Design System](https://www.kaymathew.com/articles/pt-1-build-a-css-in-js-react-app-with-styled-components-and-priceline-design-system/)

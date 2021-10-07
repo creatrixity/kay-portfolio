@@ -8,6 +8,7 @@
 html {
   font-size: $typographic-root-font-size;
   scroll-behavior: smooth;
+  counter-reset: item;
 }
 
 body {
@@ -30,26 +31,38 @@ h4,
 h5,
 h6 {
   font-family: $typographic-font-family;
-  font-weight: 600;
+  font-weight: bold;
   margin: 0;
 }
 
 h1 {
   font-size: $type-scale-1;
-  font-weight: bold;
-  line-height: $type-scale-1 * 1.414;
+  line-height: $type-scale-0;
+
+  @include respond-to('small') {
+    font-size: $pf-type-scale-1;
+    line-height: $type-scale-1;
+  }
 }
 
 h2 {
   font-size: $type-scale-2;
-  font-weight: bold;
   line-height: $type-scale-1;
+
+  @include respond-to('small') {
+    font-size: $type-scale-4;
+    line-height: $type-scale-3;
+  }
 }
 
 h3 {
   font-size: $type-scale-3;
-  font-weight: bold;
   line-height: $type-scale-2;
+
+  @include respond-to('small') {
+    font-size: $type-scale-5;
+    line-height: $type-scale-4;
+  }
 }
 
 h4,
@@ -221,6 +234,12 @@ figcaption {
     border-radius: 50px;
     font-size: $type-scale-5;
     font-weight: 600;
+
+    @include respond-to('small') {
+      font-size: $type-scale-6;
+      padding: 0.5rem 2rem;
+      line-height: $type-scale-4;
+    }
   }
 }
 

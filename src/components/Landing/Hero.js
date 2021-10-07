@@ -15,10 +15,10 @@ const Hero = ({ children }: Props) => {
   const animateHeroTextIn = !!entry?.isIntersecting;
 
   return (
-    <section className={styles.landing__hero}>
+    <section className={styles.Hero}>
       <Header animateLinksIn={animateHeroTextIn} />
 
-      <section className={cx([styles.container, styles['container--fullHeight']])} ref={heroRef}>
+      <section className={cx([styles.container])} ref={heroRef}>
         <p
           className={cx([
             styles.Hero__text,

@@ -26,11 +26,17 @@ $typographic-root-font-size: 100;
 $typographic-base-font-size: 16px;
 $typographic-small-font-size: 14px;
 
+$type-scale-0: 7.993rem;
 $type-scale-1: 5.653rem;
 $type-scale-2: 3.998rem;
 $type-scale-3: 2.827rem;
 $type-scale-4: 1.999rem;
 $type-scale-5: 1.414rem;
+$type-scale-6: 1rem;
+$type-scale-7: 0.707rem;
+
+$pf-type-scale-0: 5.61rem;
+$pf-type-scale-1: 4.209rem;
 
 $typographic-base-line-height: 1.625;
 
@@ -52,3 +58,7 @@ $layout-width: 1070px;
 $layout-breakpoint-sm: 685px;
 $layout-breakpoint-md: 960px;
 $layout-breakpoint-lg: 1100px;
+
+// Hamburger;
+
+$hamburger-width: 24px;
