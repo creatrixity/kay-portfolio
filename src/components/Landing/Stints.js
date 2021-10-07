@@ -34,6 +34,7 @@ const Stints = ({ children }: Props) => {
         >
           {stints.map(({ label, epoch, designation, slug, highlights }, idx) => (
             <StintDetail
+              key={slug}
               slug={slug}
               selectedSkill={selectedStint.skill}
               idx={idx}
@@ -62,6 +63,7 @@ const Stints = ({ children }: Props) => {
                 animateCard={animateStintsTextIn}
                 idx={idx}
                 label={label}
+                key={slug}
                 slug={slug}
               >
                 <img src={`/media/${slug}.png`} className={styles.Stints__icon} />

@@ -38,6 +38,7 @@ const Skills = ({ children }: Props) => {
                 onSelectEntry={() => setSelectedSkill({ skill: slug, idx })}
                 animateCard={animateSkillsTextIn}
                 idx={idx}
+                key={slug}
                 label={label}
                 slug={slug}
               >
@@ -72,6 +73,7 @@ const Skills = ({ children }: Props) => {
         >
           {skills.map(({ label, title, description, slug }, idx) => (
             <SkillDetail
+              key={slug}
               slug={slug}
               selectedSkill={selectedSkill.skill}
               idx={idx}
