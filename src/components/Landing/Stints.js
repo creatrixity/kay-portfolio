@@ -21,7 +21,7 @@ const Stints = ({ children }: Props) => {
   const animateStintsTextIn = !!entry?.isIntersecting;
 
   return (
-    <section className={cx(styles.Stints)}>
+    <section className={cx(styles.Stints)} id="experience">
       <div className={styles.Stints__details}>
         <section
           className={cx([styles.Stints__wrapper])}

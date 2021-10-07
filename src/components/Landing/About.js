@@ -14,7 +14,7 @@ const About = ({ children }: Props) => {
   const animateAboutTextIn = !!entry?.isIntersecting;
 
   return (
-    <section className={cx(styles.About)} ref={aboutRef}>
+    <section className={cx(styles.About)} ref={aboutRef} id="about">
       <section className={cx([styles.container, styles['container--fullHeight']])}>
         <div className={styles.landing__About}>
           <section>
@@ -52,7 +52,7 @@ const About = ({ children }: Props) => {
               ])}
             >
               Recently, I've taken a keener interest in sharing my knowledge and you really should{' '}
-              <a className="with-underline" href="#">
+              <a className="with-underline" href="/articles">
                 read my blog
               </a>{' '}
               where I write about React and Node.js.

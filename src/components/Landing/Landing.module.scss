@@ -291,3 +291,19 @@
     }
   }
 }
+
+.Contact {
+  &__footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 4rem 0;
+    font-size: $type-scale-5;
+    color: rgba(255, 255, 255, 0.36);
+
+    &__link {
+      display: flex;
+      align-items: center;
+    }
+  }
+}

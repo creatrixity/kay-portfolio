@@ -21,7 +21,7 @@ const Skills = ({ children }: Props) => {
   const animateSkillsTextIn = !!entry?.isIntersecting;
 
   return (
-    <section className={cx(styles.Skills)}>
+    <section className={cx(styles.Skills)} id="skills">
       <div className={styles.Skills__list}>
         <section className={styles.Skills__list__inner} ref={skillsRef}>
           <h1

@@ -53,11 +53,14 @@ const Hero = ({ children }: Props) => {
         >
           I’m a software engineer that enjoys designing and building helpful products. My current adventure is building
           financial products at{' '}
-          <a className="with-underline" href="#">
+          <a className="with-underline" href="https://kudi.ai">
             Kudi
           </a>
         </p>
-        <a className="btn-primary btn-primary--xxl animate__fadeInUp animate__animated animate__delay-5s">
+        <a
+          href={'/articles'}
+          className="btn-primary btn-primary--xxl animate__fadeInUp animate__animated animate__delay-5s"
+        >
           See my articles
         </a>
       </section>
