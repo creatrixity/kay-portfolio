@@ -6,7 +6,7 @@ import Sidebar from '../components/Sidebar';
 import Feed from '../components/Feed';
 import Page from '../components/Page';
 import Pagination from '../components/Pagination';
-import { useSiteMetadata } from '../hooks';
+import { useArticlesList, useSiteMetadata } from '../hooks';
 import type { PageContext, AllMarkdownRemark } from '../types';
 
 type Props = {
@@ -14,14 +14,13 @@ type Props = {
   pageContext: PageContext,
 };
 
-const ArticleTemplate = ({ data, pageContext }: Props) => {
+const ArticleTemplate = ({ pageContext }: Props) => {
   const { title: siteTitle, subtitle: siteSubtitle } = useSiteMetadata();
+  const data = useArticlesList();
 
   const { currentPage, hasNextPage, hasPrevPage, prevPagePath, nextPagePath } = pageContext;
 
-  console.log(data, pageContext);
-  if (!data) return null;
-  const { edges } = data.allMarkdownRemark;
+  const { edges } = data;
   const pageTitle = currentPage > 0 ? `Posts - Page ${currentPage} - ${siteTitle}` : siteTitle;
 
   return (
@@ -40,30 +39,30 @@ const ArticleTemplate = ({ data, pageContext }: Props) => {
   );
 };
 
-export const query = graphql`
-  query ArticleTemplate($postsLimit: Int!, $postsOffset: Int!) {
-    allMarkdownRemark(
-      limit: $postsLimit
-      skip: $postsOffset
-      filter: { frontmatter: { template: { eq: "post" }, draft: { ne: true } } }
-      sort: { order: DESC, fields: [frontmatter___date] }
-    ) {
-      edges {
-        node {
-          fields {
-            slug
-            categorySlug
-          }
-          frontmatter {
-            title
-            date
-            category
-            description
-          }
-        }
-      }
-    }
-  }
-`;
+// export const query = graphql`
+//   query ArticleTemplate($postsLimit: Int!, $postsOffset: Int!) {
+//     allMarkdownRemark(
+//       limit: $postsLimit
+//       skip: $postsOffset
+//       filter: { frontmatter: { template: { eq: "post" }, draft: { ne: true } } }
+//       sort: { order: DESC, fields: [frontmatter___date] }
+//     ) {
+//       edges {
+//         node {
+//           fields {
+//             slug
+//             categorySlug
+//           }
+//           frontmatter {
+//             title
+//             date
+//             category
+//             description
+//           }
+//         }
+//       }
+//     }
+//   }
+// `;
 
 export default ArticleTemplate;
