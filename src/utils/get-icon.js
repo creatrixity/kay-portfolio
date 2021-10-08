@@ -4,6 +4,7 @@ import { ICONS } from '../constants';
 const getIcon = (name: string) => {
   let iconsMap = {
     twitter: ICONS.TWITTER,
+    facebook: ICONS.FACEBOOK,
     github: ICONS.GITHUB,
     vkontakte: ICONS.VKONTAKTE,
     telegram: ICONS.TELEGRAM,

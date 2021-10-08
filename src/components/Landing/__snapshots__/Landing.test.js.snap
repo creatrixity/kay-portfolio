@@ -1,0 +1,590 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Landing renders correctly 1`] = `
+<section
+  className="landing"
+>
+  <section
+    className="Hero"
+  >
+    <section
+      className="landing__header"
+    >
+      <svg
+        className="landing__logo animate__fadeIn animate__animated animate__delay-2s"
+        fill="none"
+        height="40"
+        viewBox="0 0 76 40"
+        width="59"
+      >
+        <title>
+          caret
+        </title>
+        <path
+          d="M74.2402 18.0147L58.0882 1.86275C56.7647 0.539217 54.6078 0.539217 53.2843 1.86275L23.3824 31.7647L12.0588 20.5637L32.9902 0H23.2843L6.37255 15.6373V0H0V39.7059H6.37255V25.2451L20.5392 38.9951C21.201 39.6569 22.2794 40 23.1618 40C24.0441 40 25 39.6569 25.6618 38.9951L55.6373 9.09314L67.0098 20.2941L47.4755 39.7059H57.0833L74.2402 22.6961C74.8775 22.0588 75.2451 21.2745 75.2451 20.3676C75.2206 19.4608 74.8775 18.652 74.2402 18.0147Z"
+          fill="#99F0FF"
+        />
+        <path
+          d="M58.9216 17.1569C57.5735 15.8333 55.4412 15.7108 54.1176 17.0343L31.5931 39.7059H41.152L58.9461 21.8382C60.2696 20.4902 60.2451 18.4804 58.9216 17.1569Z"
+          fill="#99F0FF"
+        />
+      </svg>
+      <section
+        className="landing__nav__container"
+      >
+        <ul
+          className="NavList"
+        >
+          <li
+            className="NavList__item"
+          >
+            <a
+              className="NavList__link"
+              href="/test/1/"
+            >
+              <svg
+                className="NavList__link__icon"
+                fill="none"
+                height="13"
+                viewBox="0 0 11 13"
+                width="11"
+              >
+                <title>
+                  caret
+                </title>
+                <path
+                  d="M8.95837 8.88236C10.3138 7.68793 10.3138 5.57523 8.95837 4.3808L6.48343 2.19984C4.54592 0.492473 1.5 1.86816 1.5 4.45062L1.5 8.81254C1.5 11.395 4.54592 12.7707 6.48343 11.0633L8.95837 8.88236Z"
+                  fill="none"
+                  stroke="#99F0FF"
+                  strokeWidth={2}
+                />
+              </svg>
+              Test label 1
+            </a>
+          </li>
+          <li
+            className="NavList__item"
+          >
+            <a
+              className="NavList__link"
+              href="/test/2/"
+            >
+              <svg
+                className="NavList__link__icon"
+                fill="none"
+                height="13"
+                viewBox="0 0 11 13"
+                width="11"
+              >
+                <title>
+                  caret
+                </title>
+                <path
+                  d="M8.95837 8.88236C10.3138 7.68793 10.3138 5.57523 8.95837 4.3808L6.48343 2.19984C4.54592 0.492473 1.5 1.86816 1.5 4.45062L1.5 8.81254C1.5 11.395 4.54592 12.7707 6.48343 11.0633L8.95837 8.88236Z"
+                  fill="none"
+                  stroke="#99F0FF"
+                  strokeWidth={2}
+                />
+              </svg>
+              Test label 2
+            </a>
+          </li>
+          <li
+            className="NavList__item"
+          >
+            <a
+              className="NavList__link"
+              href="/test/3/"
+            >
+              <svg
+                className="NavList__link__icon"
+                fill="none"
+                height="13"
+                viewBox="0 0 11 13"
+                width="11"
+              >
+                <title>
+                  caret
+                </title>
+                <path
+                  d="M8.95837 8.88236C10.3138 7.68793 10.3138 5.57523 8.95837 4.3808L6.48343 2.19984C4.54592 0.492473 1.5 1.86816 1.5 4.45062L1.5 8.81254C1.5 11.395 4.54592 12.7707 6.48343 11.0633L8.95837 8.88236Z"
+                  fill="none"
+                  stroke="#99F0FF"
+                  strokeWidth={2}
+                />
+              </svg>
+              Test label 3
+            </a>
+          </li>
+        </ul>
+        <a
+          className="btn-primary animate__fadeInDown animate__animated animate__delay-5s"
+          target="_blank"
+        >
+          My Resume
+        </a>
+      </section>
+      <button
+        aria-label="menu"
+        className="Hamburger__button"
+        onClick={[Function]}
+      >
+        <span
+          className="Hamburger"
+        >
+          <span
+            className="Hamburger__inner"
+          />
+        </span>
+      </button>
+      <aside
+        aria-hidden="false"
+        className="MobileMenu"
+        tabIndex="1"
+      >
+        <nav>
+          <ol>
+            <li>
+              <a
+                href="/test/1/"
+              >
+                Test label 1
+              </a>
+            </li>
+            <li>
+              <a
+                href="/test/2/"
+              >
+                Test label 2
+              </a>
+            </li>
+            <li>
+              <a
+                href="/test/3/"
+              >
+                Test label 3
+              </a>
+            </li>
+          </ol>
+          <a
+            className="btn-primary animate__fadeInDown animate__animated animate__delay-5s"
+            target="_blank"
+          >
+            My Resume
+          </a>
+        </nav>
+      </aside>
+    </section>
+    <section
+      className="container"
+    >
+      <p
+        className="Hero__text"
+      >
+        Hello pardner,
+      </p>
+      <hgroup
+        className="Hero__headingGroup"
+      >
+        <h1
+          className="Hero__title"
+        >
+          I’m Caleb Mathew.
+        </h1>
+        <h2
+          className="Hero__subtitle"
+        >
+          I help improve mankind’s greatest invention.
+        </h2>
+      </hgroup>
+      <p
+        className="Hero__intro"
+      >
+        I’m a software engineer that enjoys designing and building helpful products. My current adventure is building financial products at
+         
+        <a
+          className="with-underline"
+          href="https://kudi.ai"
+        >
+          Kudi
+        </a>
+      </p>
+      <a
+        className="btn-primary btn-primary--xxl animate__fadeInUp animate__animated animate__delay-5s"
+        href="/articles"
+      >
+        See my articles
+      </a>
+    </section>
+  </section>
+  <section
+    className="About"
+    id="about"
+  >
+    <section
+      className="container container--fullHeight"
+    >
+      <div
+        className="landing__About"
+      >
+        <section>
+          <h1
+            className="About__title"
+            data-label="01."
+          >
+            About me
+          </h1>
+          <p
+            className="About__intro"
+          >
+            I’m Caleb (sometimes referred to as Kay) and I enjoy solving problems through code and design. I took an interest in web development in the aftermath of interest in gaming and the first moment I made Sonic run on my little 65k color Nokia mobile browser way back in early 2008 was magical for me.
+          </p>
+          <p
+            className="About__intro"
+          >
+            Over the last couple of years, I've had the good fortune of working on a variety of interesting projects, from building terminal management systems for POS devices to onboarding software for the military. My main focus these days is building products that help us solve more problems for financially underrepresented people at Kudi.
+             
+          </p>
+          <p
+            className="About__intro"
+          >
+            Recently, I've taken a keener interest in sharing my knowledge and you really should
+             
+            <a
+              className="with-underline"
+              href="/articles"
+            >
+              read my blog
+            </a>
+             
+            where I write about React and Node.js.
+          </p>
+        </section>
+      </div>
+    </section>
+  </section>
+  <section
+    className="Skills"
+    id="skills"
+  >
+    <div
+      className="Skills__list"
+    >
+      <section
+        className="Skills__list__inner"
+      >
+        <h1
+          className="Skills__title"
+          data-label="02."
+        >
+          Skills.
+        </h1>
+        <section
+          className="Entries"
+        >
+          <div>
+            <input
+              checked={true}
+              className="EntryCard__radio"
+              id="entry-javascript"
+              onChange={[Function]}
+              type="radio"
+            />
+            <label
+              className="EntryCard"
+              htmlFor="entry-javascript"
+            >
+              <section>
+                <h4
+                  className="EntryCard__title"
+                >
+                  JavaScript
+                </h4>
+                <a
+                  className="EntryCard__link with-underline"
+                  href="#"
+                >
+                  Read more
+                </a>
+              </section>
+              <img
+                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg"
+                width="64"
+              />
+            </label>
+          </div>
+        </section>
+      </section>
+    </div>
+    <div
+      className="Skills__details"
+    >
+      <section
+        className="Skills__wrapper"
+        style={
+          Object {
+            "height": "100%",
+            "transform": "translateX(-0%)",
+            "transition": "transform 1s ease",
+            "width": "100%",
+          }
+        }
+      >
+        <section
+          className="Skills__detail Skills__detail__javascript Skills__detailSelected"
+          style={
+            Object {
+              "left": "0%",
+            }
+          }
+        >
+          <button
+            aria-label="menu"
+            className="Hamburger__button"
+            onClick={[Function]}
+          >
+            <span
+              className="Hamburger"
+            >
+              <span
+                className="Hamburger__inner"
+              />
+            </span>
+          </button>
+          <div
+            className="Skills__stuff"
+          >
+            <p
+              className="Skills__detail__subtitle"
+            >
+              About 
+              JavaScript
+            </p>
+            <h2
+              className="Skills__detail__title"
+            >
+              The Swiss Army knife of software development.
+            </h2>
+            <p
+              className="Skills__detail__desc"
+            >
+              This incredibly important little buddy allows me to do everything from crafting experiences and defining behavior for the web to writing and running interactive servers.
+            </p>
+          </div>
+        </section>
+      </section>
+    </div>
+  </section>
+  <section
+    className="Stints"
+    id="experience"
+  >
+    <div
+      className="Stints__details"
+    >
+      <section
+        className="Stints__wrapper"
+        style={
+          Object {
+            "height": "100%",
+            "transform": "translateX(-0%)",
+            "transition": "transform 1s ease",
+            "width": "100%",
+          }
+        }
+      >
+        <section
+          className="Stints__detail Stints__detail__test"
+          style={
+            Object {
+              "left": "0%",
+            }
+          }
+        >
+          <button
+            aria-label="menu"
+            className="Hamburger__button"
+            onClick={[Function]}
+          >
+            <span
+              className="Hamburger"
+            >
+              <span
+                className="Hamburger__inner"
+              />
+            </span>
+          </button>
+          <div
+            className="Stints__stuff"
+          >
+            <hgroup>
+              <h2
+                className="Stints__detail__title"
+              >
+                Test
+              </h2>
+              <h3
+                className="Stints__detail__desc"
+              >
+                Senior Test Engineer
+              </h3>
+            </hgroup>
+            <time
+              className="Stints__detail__epoch"
+            >
+              July 2020 - present
+            </time>
+            <ul
+              className="Stints__detail__highlights"
+            >
+              <li
+                className="Stints__detail__highlight"
+              >
+                <svg
+                  className="Stints__detail__highlight__icon"
+                  fill="none"
+                  height="16"
+                  viewBox="0 0 11 13"
+                  width="24.42"
+                >
+                  <title>
+                    caret
+                  </title>
+                  <path
+                    d="M8.95837 8.88236C10.3138 7.68793 10.3138 5.57523 8.95837 4.3808L6.48343 2.19984C4.54592 0.492473 1.5 1.86816 1.5 4.45062L1.5 8.81254C1.5 11.395 4.54592 12.7707 6.48343 11.0633L8.95837 8.88236Z"
+                    fill="none"
+                    stroke="#99F0FF"
+                    strokeWidth={2}
+                  />
+                </svg>
+                Write tested code mf.
+              </li>
+            </ul>
+          </div>
+        </section>
+      </section>
+    </div>
+    <div
+      className="Stints__list"
+    >
+      <section
+        className="Stints__list__inner"
+      >
+        <h1
+          className="Stints__title"
+          data-label="03."
+        >
+          Experience.
+        </h1>
+        <section
+          className="Entries"
+        >
+          <div>
+            <input
+              checked={false}
+              className="EntryCard__radio"
+              id="entry-test"
+              onChange={[Function]}
+              type="radio"
+            />
+            <label
+              className="EntryCard"
+              htmlFor="entry-test"
+            >
+              <section>
+                <h4
+                  className="EntryCard__title"
+                >
+                  Test
+                </h4>
+                <a
+                  className="EntryCard__link with-underline"
+                  href="#"
+                >
+                  Read more
+                </a>
+              </section>
+              <img
+                className="Stints__icon"
+                src="/media/test.png"
+              />
+            </label>
+          </div>
+        </section>
+      </section>
+    </div>
+  </section>
+  <section
+    className="Contact"
+    id="contact"
+  >
+    <section
+      className="container container--fullHeight"
+    >
+      <div
+        className="landing__Contact"
+      >
+        <section>
+          <h1
+            className="Contact__title"
+            data-label="04."
+          >
+            Let's chat.
+          </h1>
+          <p
+            className="Contact__intro"
+          >
+            Got a question or proposal for me? Let’s get in touch! I have a personal rule of returning responses within a 3-hour window.
+          </p>
+          <p
+            className="Contact__intro"
+          >
+            Start by
+             
+            <a
+              className="with-underline"
+              href="mailto:#"
+            >
+              saying hi
+            </a>
+             
+          </p>
+          <section
+            className="Contact__footer"
+          >
+            <a
+              className="Contact__footer__link"
+              href="https://twitter.com/#"
+            >
+              <svg
+                className="icon"
+                viewBox="0 0 26 28"
+              >
+                <title>
+                  twitter
+                </title>
+                <path
+                  d="M25.312 6.375c-0.688 1-1.547 1.891-2.531 2.609 0.016 0.219 0.016 0.438 0.016 0.656 0 6.672-5.078 14.359-14.359 14.359-2.859 0-5.516-0.828-7.75-2.266 0.406 0.047 0.797 0.063 1.219 0.063 2.359 0 4.531-0.797 6.266-2.156-2.219-0.047-4.078-1.5-4.719-3.5 0.313 0.047 0.625 0.078 0.953 0.078 0.453 0 0.906-0.063 1.328-0.172-2.312-0.469-4.047-2.5-4.047-4.953v-0.063c0.672 0.375 1.453 0.609 2.281 0.641-1.359-0.906-2.25-2.453-2.25-4.203 0-0.938 0.25-1.797 0.688-2.547 2.484 3.062 6.219 5.063 10.406 5.281-0.078-0.375-0.125-0.766-0.125-1.156 0-2.781 2.25-5.047 5.047-5.047 1.453 0 2.766 0.609 3.687 1.594 1.141-0.219 2.234-0.641 3.203-1.219-0.375 1.172-1.172 2.156-2.219 2.781 1.016-0.109 2-0.391 2.906-0.781z"
+                />
+              </svg>
+              <span
+                className="with-underline ml-5"
+              >
+                twitter.com/
+                #
+              </span>
+            </a>
+            <p>
+              Designed & developed by Kay Mathew
+            </p>
+          </section>
+        </section>
+      </div>
+    </section>
+  </section>
+  <div
+    className="landing__overlay"
+    onClick={[Function]}
+  />
+</section>
+`;
