@@ -717,6 +717,6 @@ In our next tutorial, we'll explore more responsiveness aiding techniques. We'll
 
 - [Image and Data assets for this tutorial](https://drive.google.com/open?id=1MGynQBcsi2tiVlVjrshlKZ_lTnm0K9lP)
 - [React Infinite Scroll Component Intro](https://www.npmjs.com/package/react-infinite-scroll-component)
-- [Fireliners Github Code available here](http://github.com/creatrixity/fire-liners)
+- [Fireliners Github Code available here](https://github.com/creatrixity/fire-liners)
 - [Priceline Design System Components](https://pricelinelabs.github.io/design-system)
 - [Study on perceived non-responsiveness implications](https://www.adweek.com/digital/study-consumers-will-abandon-apps-with-greater-than-six-second-load-times-infographic/)

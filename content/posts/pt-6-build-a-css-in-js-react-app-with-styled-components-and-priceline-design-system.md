@@ -596,7 +596,7 @@ We'll now handle `ADD_NOTIFICATION` actions. When a notification is sent, we'd l
 
 We calculate the new id using JavaScript's `reduce` method. We use the spread operator to extract the action's payload data into a new object. We then push that new object into an array.
 
-![ID Calculation code](http://a.t)![ID-Calculation.png](https://cdn.steemitimages.com/DQmdtScQZ4QcBXHZC8CuKPFJJd44Gr9dv3EzGnSoRH3juXQ/ID-Calculation.png)
+![ID-Calculation.png](https://cdn.steemitimages.com/DQmdtScQZ4QcBXHZC8CuKPFJJd44Gr9dv3EzGnSoRH3juXQ/ID-Calculation.png)
 
 ```js
         case ADD_NOTIFICATION:
@@ -662,7 +662,7 @@ In our next tutorial, we'll explore more advanced performance techniques. We'll 
 
 - [React Skeletal Loader Component Intro](https://github.com/dvtng/react-loading-skeleton)
 - [React Spinners Component Docs](https://www.npmjs.com/package/react-spinners)
-- [Fireliners Github Code available here](http://github.com/creatrixity/fire-liners)
+- [Fireliners Github Code available here](https://github.com/creatrixity/fire-liners)
 - [How Micro-Interactions improve UX Design](https://www.invisionapp.com/blog/use-microinteractions-improve-ux-design/)
 - [Priceline Design System Banner Docs](https://pricelinelabs.github.io/design-system/Banner)
 - [Non-Linearity in Nature](https://www.vincegowmon.com/nothing-in-nature-is-linear-yet-we-push-and-ready-children-along-straight-pathways/)
