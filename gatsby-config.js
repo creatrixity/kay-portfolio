@@ -136,6 +136,7 @@ module.exports = {
     'gatsby-transformer-sharp',
     'gatsby-plugin-sharp',
     'gatsby-plugin-netlify',
+    '@babel/plugin-proposal-optional-chaining',
     {
       resolve: 'gatsby-plugin-netlify-cms',
       options: {
