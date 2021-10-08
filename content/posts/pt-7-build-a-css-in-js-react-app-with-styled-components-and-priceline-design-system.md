@@ -1,15 +1,15 @@
 ---
-title: "Pt 7: Build a CSS-in-JS React App with Styled Components and Priceline Design System"
-date: "2018-07-01T23:46:37.121Z"
-template: "post"
+title: 'Pt 7: Build a CSS-in-JS React App with Styled Components and Priceline Design System'
+date: '2018-07-01T23:46:37.121Z'
+template: 'post'
 draft: false
-slug: "/posts/pt-7-build-a-css-in-js-react-app-with-styled-components-and-priceline-design-system/"
-category: "Front End"
+slug: '/articles/pt-7-build-a-css-in-js-react-app-with-styled-components-and-priceline-design-system/'
+category: 'Front End'
 tags:
-  - "Javascript"
-  - "React"
-description: "We will learn how to build a feature that progressively displays author information upon interaction. In the course of building this feature, we will learn techniques such as rate limiting using `debounce` and `lodash` and cache memoization to avoid memory leaks and improve performance."
-socialMedia: "https://steemitimages.com/256x512/https://cdn.steemitimages.com/DQmeF6BDrvHbNQCYFP17nYGdCtp7d9oWra6g1oxbiZnyAJm/AuthorCard-completed.gif"
+  - 'Javascript'
+  - 'React'
+description: 'We will learn how to build a feature that progressively displays author information upon interaction. In the course of building this feature, we will learn techniques such as rate limiting using `debounce` and `lodash` and cache memoization to avoid memory leaks and improve performance.'
+socialMedia: 'https://steemitimages.com/256x512/https://cdn.steemitimages.com/DQmeF6BDrvHbNQCYFP17nYGdCtp7d9oWra6g1oxbiZnyAJm/AuthorCard-completed.gif'
 ---
 
 ![Complete Author Card](https://cdn.steemitimages.com/DQmeF6BDrvHbNQCYFP17nYGdCtp7d9oWra6g1oxbiZnyAJm/AuthorCard-completed.gif)
@@ -168,8 +168,8 @@ We start off by importing styled-component's `styled` function that allows us to
 Next, we add some light CSS within the tagged template literal of the `AuthorCard` constant. We are simply doing some absolute positioning here to make sure it is some distance away from the avatar and then we make it wide. It's interesting to see that we have less CSS to write thanks to styled component composition as we simply inherit from the `<Card/>` component.
 
 ```js
-import styled from "styled-components"
-import { Card } from "pcln-design-system"
+import styled from 'styled-components';
+import { Card } from 'pcln-design-system';
 
 const AuthorCard = styled(Card)`
   position: absolute;
@@ -178,24 +178,20 @@ const AuthorCard = styled(Card)`
   left: -105px;
   z-index: 500;
   border-radius: 5px;
-`
-export default AuthorCard
+`;
+export default AuthorCard;
 ```
 
 Great, let's see if we're ready to use it. We'll use it within the `Feed` component. At the moment our `Feed` component is a monolithic mess. Let's break it down into a series of smaller components. Our `Feed` component is now much more easy to understand as we simply define a new component `FeedItem`. We'll pass the `index`, `liner` and other provided variables as props.
 
 ```js
-export const Feed = props => {
+export const Feed = (props) => {
   return props.liners.length > 0 ? (
-    props.liners
-      .sort()
-      .map((liner, index) => (
-        <FeedItem key={index} liner={liner} index={index} {...props} />
-      ))
+    props.liners.sort().map((liner, index) => <FeedItem key={index} liner={liner} index={index} {...props} />)
   ) : (
     <div>Nothing found</div>
-  )
-}
+  );
+};
 ```
 
 We also define some prop types for our `Feed` component. The props accepted by our `Feed` component:
@@ -217,26 +213,26 @@ Feed.propTypes = {
   isLoading: PropTypes.bool,
   onAuthorMouseOver: PropTypes.func,
   onAuthorMouseLeave: PropTypes.func,
-}
+};
 
 Feed.defaultProps = {
   liners: [],
   linersSetIndex: 0,
   authors: [],
   isLoading: false,
-  onAuthorMouseOver: function() {},
-  onAuthorMouseLeave: function() {},
-}
+  onAuthorMouseOver: function () {},
+  onAuthorMouseLeave: function () {},
+};
 ```
 
 We also define the `FeedItem` component. It's also really small as the bulk of its code is contained within the `FeedItemContent` and `FeedItemAvatar` components.
 
 ```js
-const FeedItem = props => (
+const FeedItem = (props) => (
   <Box>
     <Flex
-      bg={props.index === props.linersSetIndex * 5 ? "lightBlue" : "lightGray"}
-      style={{ borderRadius: "4px" }}
+      bg={props.index === props.linersSetIndex * 5 ? 'lightBlue' : 'lightGray'}
+      style={{ borderRadius: '4px' }}
       p={3}
       mb={3}
     >
@@ -244,7 +240,7 @@ const FeedItem = props => (
       <FeedItemContent {...props} />
     </Flex>
   </Box>
-)
+);
 ```
 
 Within our `FeedItemAvatar`, we'll simply be displaying our avatar as previously seen on this series but we are making two changes: we are adding event handlers to the `Circle` component. We have:
@@ -254,47 +250,37 @@ Within our `FeedItemAvatar`, we'll simply be displaying our avatar as previously
 _The reason this method must be supplied by a parent component is simple: our `Feed` component is dumb (or stateless, if your prefer) and it can only work with any methods or values supplied to it from another component._
 
 ```js
-const FeedItemAvatar = props => (
-  <Flex style={{ position: "relative" }} width={[0.5, 0.7, 0.3]}>
+const FeedItemAvatar = (props) => (
+  <Flex style={{ position: 'relative' }} width={[0.5, 0.7, 0.3]}>
     <Circle
       bg="#d5d5d5"
       mr={5}
       flexDirection="column"
       justify="center"
-      onMouseOver={e => props.onAuthorMouseOver(props.index)}
-      onMouseLeave={e => props.onAuthorMouseLeave()}
+      onMouseOver={(e) => props.onAuthorMouseOver(props.index)}
+      onMouseLeave={(e) => props.onAuthorMouseLeave()}
     >
-      {!props.isLoading &&
-        props.liners.length >= props.index &&
-        (getLinerAuthor(props.liner, props.authors).photo && (
-          <Image
-            src={require(`../../assets/img/${
-              getLinerAuthor(props.liner, props.authors).photo
-            }`)}
-            style={{ borderRadius: "50%", width: "60px" }}
-          />
-        ))}
+      {!props.isLoading && props.liners.length >= props.index && getLinerAuthor(props.liner, props.authors).photo && (
+        <Image
+          src={require(`../../assets/img/${getLinerAuthor(props.liner, props.authors).photo}`)}
+          style={{ borderRadius: '50%', width: '60px' }}
+        />
+      )}
     </Circle>
   </Flex>
-)
+);
 ```
 
 Last of all, we finish refactoring by defining the `FeedItemContent`.
 
 ```js
-const FeedItemContent = props => (
+const FeedItemContent = (props) => (
   <Flex flexDirection="column" width={[0.5, 0.7, 0.7]}>
     <Text mb={3} width={1} italic fontSize={[1, 2, 3]}>
-      {!props.isLoading && props.liners.length >= props.index ? (
-        props.liner.body
-      ) : (
-        <Skeleton count={3} />
-      )}
+      {!props.isLoading && props.liners.length >= props.index ? props.liner.body : <Skeleton count={3} />}
     </Text>
     {!props.isLoading && props.liners.length >= props.index ? (
-      <Link
-        href={"/authors/" + getLinerAuthor(props.liner, props.authors).slug}
-      >
+      <Link href={'/authors/' + getLinerAuthor(props.liner, props.authors).slug}>
         <Text fontSize={1} mb={3} color="gray" align="right" bold>
           {props.liner.author}
         </Text>
@@ -305,7 +291,7 @@ const FeedItemContent = props => (
       </Flex>
     )}
   </Flex>
-)
+);
 ```
 
 Great! Instead of one giant component, we have three smaller components. Proceeding with our `AuthorCard` component, we'll use it within the `<FeedItemAvatar/>` component.
@@ -323,18 +309,18 @@ Next, we'd like a bit of shadow to simulate depth so we set `boxShadowSize` to `
 Next, within the `AuthorCard`, we start fleshing out some content. We display the author's name alongside his/her government name. We then display the author's liners count to the right with the call to action centrally displayed.
 
 ```js
-import AuthorCard from "../../components/AuthorCard"
+import AuthorCard from '../../components/AuthorCard';
 
-const FeedItemAvatar = props => (
-  <Flex style={{ position: "relative" }} width={[0.5, 0.7, 0.3]}>
+const FeedItemAvatar = (props) => (
+  <Flex style={{ position: 'relative' }} width={[0.5, 0.7, 0.3]}>
     {/* Previous code exists here */}
     <AuthorCard
       style={{
         opacity: props.activeAuthorCard === props.index ? 1 : 0,
       }}
       boxShadowSize="lg"
-      onMouseOver={e => props.onAuthorMouseOver(props.index)}
-      onMouseLeave={e => props.onAuthorMouseLeave()}
+      onMouseOver={(e) => props.onAuthorMouseOver(props.index)}
+      onMouseLeave={(e) => props.onAuthorMouseLeave()}
       px={3}
       py={2}
       bg="white"
@@ -355,13 +341,13 @@ const FeedItemAvatar = props => (
         </Flex>
       </Flex>
       <Flex flexDirection="column" align="center">
-        <OutlineButton size="small" py={0} px={2} style={{ height: "35px" }}>
+        <OutlineButton size="small" py={0} px={2} style={{ height: '35px' }}>
           <Text fontSize={0}>All 32 quotes</Text>
         </OutlineButton>
       </Flex>
     </AuthorCard>
   </Flex>
-)
+);
 ```
 
 We'll now need to head back to our Home screen at `src/screens/Home/index.js` and rewrite it a little.
@@ -373,11 +359,11 @@ First of all, we need to find a way to keep the index of the author card of inte
 ```js
 class Home extends Component {
   constructor(props) {
-    super(props)
+    super(props);
     this.state = {
       // Previous code here
       activeAuthorCard: null,
-    }
+    };
   }
 }
 ```
@@ -391,18 +377,18 @@ We also update our `<Feed/>` component call to reflect the recent changes made. 
   authors={this.props.authors}
   isLoading={this.state.isLoadingLiners}
   activeAuthorCard={this.state.activeAuthorCard}
-  onAuthorMouseOver={index => this.setActiveAuthorCard(index)}
-  onAuthorMouseLeave={index => this.setActiveAuthorCard(null)}
+  onAuthorMouseOver={(index) => this.setActiveAuthorCard(index)}
+  onAuthorMouseLeave={(index) => this.setActiveAuthorCard(null)}
 />
 ```
 
 We'll define the `setActiveAuthorCard` method next. It is a one-liner method that simply sets the value of the `state.activeAuthorCard` value.
 
 ```js
-setActiveAuthorCard = index =>
+setActiveAuthorCard = (index) =>
   this.setState({
     activeAuthorCard: index,
-  })
+  });
 ```
 
 We'll fire up our server with `npm start` and have a look at the result below.
@@ -422,12 +408,12 @@ We will make sure we call a _debounced_ function every time we move our mouse to
 To get started, we import the `debounce` function from `lodash`. Next up, we will make sure any time the `this.setActiveAuthorCard` method is called, only the "debounced" version of this method is called, we will make sure this method can only be called once in 200 milliseconds so we supply `200` as the second argument to the `debounce` function.
 
 ```js
-import { debounce } from "lodash"
+import { debounce } from 'lodash';
 
 class Home extends Component {
   constructor(props) {
     // previous code...
-    this.setActiveAuthorCard = debounce(this.setActiveAuthorCard, 200)
+    this.setActiveAuthorCard = debounce(this.setActiveAuthorCard, 200);
   }
 }
 ```
@@ -449,7 +435,7 @@ const AuthorCard = styled(Card)`
   z-index: 500;
   border-radius: 5px;
   transition: opacity 0.5s ease, transform 0.3s ease-in-out;
-`
+`;
 ```
 
 We'll now proceed to carry out a transform depending on whether the card is visible or not. If it is not visible, we'll keep it 30 pixels away from the top, if it is visible, we'll bring it back to the top with a pleasant fading-translating transition.
@@ -470,8 +456,8 @@ Ain't that sweet? It's looking real pretty. We just need to do one thing and tha
 We are extending the `Box` Priceline component (just displays a div) and then we're using some absolute positioning and CSS triangle techniques to generate the white wedge.
 
 ```js
-import styled from "styled-components"
-import { Box } from "pcln-design-system"
+import styled from 'styled-components';
+import { Box } from 'pcln-design-system';
 
 const AuthorCardArrow = styled(Box)`
   position: absolute;
@@ -483,9 +469,9 @@ const AuthorCardArrow = styled(Box)`
   border-right: 15px solid transparent;
 
   border-bottom: 15px solid white;
-`
+`;
 
-export default AuthorCardArrow
+export default AuthorCardArrow;
 ```
 
 Next, we head over to `src/Components/Feed` and add it to the `AuthorCard` component instantiation.
@@ -513,17 +499,17 @@ In our next tutorial, we'll explore more advanced performance techniques. We'll 
 
 #### Curriculum
 
-- [Part One: Build a CSS-in-JS App With Styled Components and Priceline Design System](https://www.kaymathew.com/posts/pt-1-build-a-css-in-js-react-app-with-styled-components-and-priceline-design-system/)
+- [Part One: Build a CSS-in-JS App With Styled Components and Priceline Design System](https://www.kaymathew.com/articles/pt-1-build-a-css-in-js-react-app-with-styled-components-and-priceline-design-system/)
 
-- [Part Two: Build a CSS-in-JS App With Styled Components and Priceline Design System](https://www.kaymathew.com/posts/pt-2-build-a-css-in-js-react-app-with-styled-components-and-priceline-design-system/)
+- [Part Two: Build a CSS-in-JS App With Styled Components and Priceline Design System](https://www.kaymathew.com/articles/pt-2-build-a-css-in-js-react-app-with-styled-components-and-priceline-design-system/)
 
-- [Part Three: Build a CSS-in-JS App With Styled Components and Priceline Design System](https://www.kaymathew.com/posts/pt-3-build-a-css-in-js-react-app-with-styled-components-and-priceline-design-system/)
+- [Part Three: Build a CSS-in-JS App With Styled Components and Priceline Design System](https://www.kaymathew.com/articles/pt-3-build-a-css-in-js-react-app-with-styled-components-and-priceline-design-system/)
 
-- [Part Four: Build a CSS-in-JS App With Styled Components and Priceline Design System](https://www.kaymathew.com/posts/pt-4-build-a-css-in-js-react-app-with-styled-components-and-priceline-design-system/)
+- [Part Four: Build a CSS-in-JS App With Styled Components and Priceline Design System](https://www.kaymathew.com/articles/pt-4-build-a-css-in-js-react-app-with-styled-components-and-priceline-design-system/)
 
-- [Part Five: Build a CSS-in-JS App With Styled Components and Priceline Design System](https://www.kaymathew.com/posts/pt-5-build-a-css-in-js-react-app-with-styled-components-and-priceline-design-system/)
+- [Part Five: Build a CSS-in-JS App With Styled Components and Priceline Design System](https://www.kaymathew.com/articles/pt-5-build-a-css-in-js-react-app-with-styled-components-and-priceline-design-system/)
 
-- [Part Six: Build a CSS-in-JS App With Styled Components and Priceline Design System](https://www.kaymathew.com/posts/pt-6-build-a-css-in-js-react-app-with-styled-components-and-priceline-design-system/)
+- [Part Six: Build a CSS-in-JS App With Styled Components and Priceline Design System](https://www.kaymathew.com/articles/pt-6-build-a-css-in-js-react-app-with-styled-components-and-priceline-design-system/)
 
 ##### Resources
 

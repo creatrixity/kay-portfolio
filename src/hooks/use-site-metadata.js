@@ -9,6 +9,7 @@ const useSiteMetadata = () => {
           siteMetadata {
             author {
               name
+              resumeUrl
               bio
               photo
               contacts {
@@ -21,6 +22,19 @@ const useSiteMetadata = () => {
             menu {
               label
               path
+            }
+            skills {
+              label
+              title
+              slug
+              description
+            }
+            stints {
+              label
+              designation
+              slug
+              epoch
+              highlights
             }
             url
             title

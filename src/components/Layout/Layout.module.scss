@@ -1,6 +1,11 @@
 @import '../../assets/scss/variables';
 @import '../../assets/scss/mixins';
+@import './global.css';
 
 .layout {
-    lost-center: $layout-width;
+  min-height: 100vh;
+}
+
+.container {
+  lost-center: $layout-width;
 }

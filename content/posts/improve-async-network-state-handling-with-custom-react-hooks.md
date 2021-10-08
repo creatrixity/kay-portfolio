@@ -1,16 +1,16 @@
 ---
-title: "Improve async network state handling with custom React Hooks"
-date: "2021-08-24T18:26:00.121Z"
-template: "post"
+title: 'Improve async network state handling with custom React Hooks'
+date: '2021-08-24T18:26:00.121Z'
+template: 'post'
 draft: false
-slug: "/posts/improve-async-network-state-handling-with-custom-react-hooks"
-category: "Front End"
+slug: '/articles/improve-async-network-state-handling-with-custom-react-hooks'
+category: 'Front End'
 tags:
-  - "JavaScript"
-  - "React"
-  - "React-Query"
-description: "In this article, I’ll cover the various states that network requests exist in and show you how to keep request management within custom Hooks. I’ll also walk you through building a small app that employs these Hooks."
-socialImage: "https://paper-attachments.dropbox.com/s_85DE2ABDC113039EBC05E47036199F81CC95206C0580047953B5BBC8BED537D0_1629174515717_image.png"
+  - 'JavaScript'
+  - 'React'
+  - 'React-Query'
+description: 'In this article, I’ll cover the various states that network requests exist in and show you how to keep request management within custom Hooks. I’ll also walk you through building a small app that employs these Hooks.'
+socialImage: 'https://paper-attachments.dropbox.com/s_85DE2ABDC113039EBC05E47036199F81CC95206C0580047953B5BBC8BED537D0_1629174515717_image.png'
 ---
 
 React offers us flexibility in how we choose to address problems (such as state, network, and style management) within our apps, and a great codebase has problem spots identified and addressed with a reproducible pattern that is standard and consistent. And, as frontend engineers, it’s crucial to properly relay information about changes in network state to the user, as most apps we build need to interact with one or more servers. We can accomplish these goals by using [](https://reactjs.org/docs/hooks-intro.html)[React custom Hooks](https://reactjs.org/docs/hooks-intro.html).

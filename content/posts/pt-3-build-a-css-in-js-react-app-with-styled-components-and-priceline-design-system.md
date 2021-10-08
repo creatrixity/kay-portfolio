@@ -3,7 +3,7 @@ title: "Pt 3: Build a CSS-in-JS React App with Styled Components and Priceline D
 date: "2018-05-25T23:46:37.121Z"
 template: "post"
 draft: false
-slug: "/posts/pt-3-build-a-css-in-js-react-app-with-styled-components-and-priceline-design-system/"
+slug: "/articles/pt-3-build-a-css-in-js-react-app-with-styled-components-and-priceline-design-system/"
 category: "Front End"
 tags:
   - "Javascript"
@@ -96,12 +96,12 @@ Reducers are functions that try to collapse multiple values to a single value. F
 
 ```js
 var items = [
-  { id: 1, title: "Rush of Blood to the Head" },
-  { id: 12, title: "Viva la Vida or Death and all His Friends" },
-  { id: 14, title: "Parachutes" },
-]
+  { id: 1, title: 'Rush of Blood to the Head' },
+  { id: 12, title: 'Viva la Vida or Death and all His Friends' },
+  { id: 14, title: 'Parachutes' },
+];
 
-const largestId = items.reduce((maxId, item) => Math.max(item.id, maxId), -1) // returns 14
+const largestId = items.reduce((maxId, item) => Math.max(item.id, maxId), -1); // returns 14
 ```
 
 **What is Flux?**
@@ -134,8 +134,8 @@ Redux works with a set of separate but related entities. We'll be looking at the
 
 ```js
 const initialState = {
-  title: "The Shawshank Redemption",
-}
+  title: 'The Shawshank Redemption',
+};
 
 const AppReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -143,12 +143,12 @@ const AppReducer = (state = initialState, action) => {
       return {
         ...state,
         title: action.data.title,
-      }
+      };
 
     default:
-      return state
+      return state;
   }
-}
+};
 ```
 
 - **Action Dispatchers**: These are the little guys that tell the Redux store something has happened. They simply call the `dispatch` method with an action object as the argument.
@@ -163,17 +163,17 @@ A typical saga looks like the one below. Here, we have the generator method `set
 
 ```js
 export function* setAppTitle(payload) {
-  const title = yield call(getAppTitle)
+  const title = yield call(getAppTitle);
   return yield put({
     type: SET_APP_TITLE,
     payload: {
       title,
     },
-  })
+  });
 }
 
 export default function* root() {
-  yield all([takeLatest(SET_APP_TITLE_REQUEST, setAppTitle)])
+  yield all([takeLatest(SET_APP_TITLE_REQUEST, setAppTitle)]);
 }
 ```
 
@@ -226,20 +226,20 @@ We'll be changing our application structure a little bit. Our new application st
 We'll be setting up our feed of liners to source data from the Redux store instead of from an array, but first of all, let's setup the Redux application structure. We'll modify `src/index.js` and have our app access the soon to be created Redux store. We'll first list out our dependencies. We'll need the `Provider` component that will allow our app access the Redux store. We'll also need the `browserHistory` method that allows us get the browsers history object. We also use the `syncHistoryWithStore` method to keep the history up to date with the store. Finally, we'll be using the `store` object which we're yet to create.
 
 ```js
-import React from "react"
-import ReactDOM from "react-dom"
-import { Provider } from "react-redux"
-import { browserHistory } from "react-router"
-import { BrowserRouter as Router } from "react-router-dom"
-import { syncHistoryWithStore } from "react-router-redux"
-import store from "./redux/store"
-import App from "./containers/App"
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { Provider } from 'react-redux';
+import { browserHistory } from 'react-router';
+import { BrowserRouter as Router } from 'react-router-dom';
+import { syncHistoryWithStore } from 'react-router-redux';
+import store from './redux/store';
+import App from './containers/App';
 ```
 
 Next, setup the application to use the above mentioned dependencies.
 
 ```js
-const history = syncHistoryWithStore(browserHistory, store)
+const history = syncHistoryWithStore(browserHistory, store);
 
 ReactDOM.render(
   <Provider store={store}>
@@ -247,8 +247,8 @@ ReactDOM.render(
       <App />
     </Router>
   </Provider>,
-  document.getElementById("root")
-)
+  document.getElementById('root')
+);
 ```
 
 We'll create the `store.js` module at `src/redux`. We'll be using the `createStore` and `applyMiddleware` methods from `redux` to help us create a `redux` store and then apply some middleware that allows us extend the store's capabilities. We'll also use a so-called 'rootReducer' that actually just combines separate reducers into one giant object. In our `configure` method, we check if the browser window has the Redux DevTools extension installed. If it does, we create the store with Dev Tools support. We then apply middleware that helps us carry out various tasks. For now we'll be using none. We then create the store supplying it all the reducers along with any possible initial state data we may have available which at the moment is an empty object.
@@ -256,39 +256,37 @@ We'll create the `store.js` module at `src/redux`. We'll be using the `createSto
 Last of all, we check if we're using hot module reloading. If we are using HMR, we keep the reducer updated with every hot reload by replacing the current reducer with itself.
 
 ```js
-import { createStore, applyMiddleware } from "redux"
+import { createStore, applyMiddleware } from 'redux';
 
-import rootReducer from "./reducers"
+import rootReducer from './reducers';
 
 export default function configure(initialState = {}) {
-  const create = window.devToolsExtension
-    ? window.devToolsExtension()(createStore)
-    : createStore
+  const create = window.devToolsExtension ? window.devToolsExtension()(createStore) : createStore;
 
-  const createStoreWithMiddleware = applyMiddleware()(create)
+  const createStoreWithMiddleware = applyMiddleware()(create);
 
-  const store = createStoreWithMiddleware(rootReducer, initialState)
+  const store = createStoreWithMiddleware(rootReducer, initialState);
 
   if (module.hot) {
-    module.hot.accept("./reducers", () => {
-      const nextReducer = require("./reducers")
-      store.replaceReducer(nextReducer)
-    })
+    module.hot.accept('./reducers', () => {
+      const nextReducer = require('./reducers');
+      store.replaceReducer(nextReducer);
+    });
   }
 
-  return store
+  return store;
 }
 ```
 
 Let's create `src/redux/reducers` and get to work. We'll be importing a single reducer (the app reducer) from `src/containers/App/reducer`. We'll also be importing the `combineReducers` method from `redux`.
 
 ```js
-import { combineReducers } from "redux"
-import AppReducer from "../containers/App/reducer"
+import { combineReducers } from 'redux';
+import AppReducer from '../containers/App/reducer';
 
 export default combineReducers({
   app: AppReducer,
-})
+});
 ```
 
 We now have to create the `AppReducer` which we'll make available at `src/containers/App/reducer.js`. We'll be importing the `fromJS` method from the
@@ -364,7 +362,7 @@ const liners =[...]
 ... And instead, run this import at the top.
 
 ```js
-import liners from "../data/liners.json"
+import liners from '../data/liners.json';
 ```
 
 We'll update the code at `src/screens/home/index.js` to reflect the change. Remove this line.
@@ -376,7 +374,7 @@ const liners =[...]
 ... And instead, run this import at the top.
 
 ```js
-import liners from "../data/liners.json"
+import liners from '../data/liners.json';
 ```
 
 The switch in architecture here helps us move our data from non-flexible format to a more convenient one.
@@ -400,66 +398,63 @@ We'll like to be able to run or 'dispatch' actions from our component. That's a 
 Finally, we change our default export from simply exporting the `Home` class to exporting the `connect` method from `react-redux`. Of course, we pass `mapStateToProps` and `mapDispatchToProps` as our arguments as well as the `Home` class as the self invoking method parameter.
 
 ```js
-import { connect } from "react-redux"
-import { fetchLinersRequest } from "./actions"
+import { connect } from 'react-redux';
+import { fetchLinersRequest } from './actions';
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
-    liners: state.app.get("liners"),
-  }
-}
+    liners: state.app.get('liners'),
+  };
+};
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch) => {
   return {
-    fetchLiners: data => dispatch(fetchLinersRequest(data)),
-  }
-}
+    fetchLiners: (data) => dispatch(fetchLinersRequest(data)),
+  };
+};
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Home)
+export default connect(mapStateToProps, mapDispatchToProps)(Home);
 ```
 
 Let's create the `fetchLinersRequest` action at `src/screens/Home/actions.js`. It's a simple method that returns an action object. We're using a yet to be created constant so create `src/screens/Home/constants.js` and add a single line
 
 ```js
-export const ADD_LINERS_REQUEST = "app/ADD_LINERS_REQUEST"
+export const ADD_LINERS_REQUEST = 'app/ADD_LINERS_REQUEST';
 ```
 
 Then we use our newly created constant in our action.
 
 ```js
-import { ADD_LINERS_REQUEST } from "./constants"
+import { ADD_LINERS_REQUEST } from './constants';
 
-export const fetchLinersRequest = data => {
+export const fetchLinersRequest = (data) => {
   return {
     type: ADD_LINERS_REQUEST,
     data,
-  }
-}
+  };
+};
 ```
 
 We're doing great. We are now letting our app now we'd like to request for our data when we start our app, but our app unfortunately, doesn't know about our request. Let's fix that by creating our first saga. We'll create `src/screens/Home/saga.js` and get to work asap. First of all, we'll import our dependencies, We'll be using the `all`, `call`, `put` and `takeLatest` methods from `redux-saga/effects` to carry out some tasks. We'll be creating a data service that we'll assign the responsibility of fetching our data. We'll also import a couple of constants.
 
 ```js
-import { all, call, put, takeLatest } from "redux-saga/effects"
-import { getLinersData } from "../../services/DataService"
-import { ADD_LINERS_REQUEST } from "./constants"
-import { SET_LINERS_DATA } from "../../containers/App/constants"
+import { all, call, put, takeLatest } from 'redux-saga/effects';
+import { getLinersData } from '../../services/DataService';
+import { ADD_LINERS_REQUEST } from './constants';
+import { SET_LINERS_DATA } from '../../containers/App/constants';
 ```
 
 Next, we define a generator function called `fetchLiners` that'll help us make a call to the data service for data. We use the `yield` statement in combination with the `call` method to get our data. We then use `redux-saga`s `put` method to dispatch `SET_LINERS_DATA` to our reducer. We'll be passing the response obtained from our request as the payload.
 
 ```js
 export function* fetchLiners() {
-  const response = yield call(getLinersData)
+  const response = yield call(getLinersData);
   return yield put({
     type: SET_LINERS_DATA,
     payload: {
       data: response,
     },
-  })
+  });
 }
 ```
 
@@ -470,55 +465,55 @@ Finally, we have to setup our default export, which will be a generator function
  * We process only the latest action
  */
 export default function* root() {
-  yield all([takeLatest(ADD_LINERS_REQUEST, fetchLiners)])
+  yield all([takeLatest(ADD_LINERS_REQUEST, fetchLiners)]);
 }
 ```
 
 We'll now create the `getLinersData` method at `src/services/DataService/index.js`. The Data Service will fetch the data from the JSON file and then return the data in form of a promise that we can use redux-saga's `call` method to resolve.
 
 ```js
-import linersData from "../../data/liners.json"
+import linersData from '../../data/liners.json';
 
 export const getLinersData = (id = null) => {
   if (id) {
-    let liner = linersData.filter(liner => liner.id === id)
-    return new Promise(resolve => resolve(liner))
+    let liner = linersData.filter((liner) => liner.id === id);
+    return new Promise((resolve) => resolve(liner));
   }
 
-  return new Promise(resolve => resolve(linersData))
-}
+  return new Promise((resolve) => resolve(linersData));
+};
 ```
 
 Now that we have our saga setup, we need to register it in the store. We can do this by updating `src/redux/store.js`. We'll import the `createSagaMiddleware` from `redux-saga` that we'll be using to (surprise) create the saga middleware. We'll also import the `rootSaga` which we're yet to create from `src/redux/sagas.js`.
 
 ```js
-import createSagaMiddleware from "redux-saga"
-import rootSaga from "./sagas"
+import createSagaMiddleware from 'redux-saga';
+import rootSaga from './sagas';
 ```
 
 Next, we add some code to the `configure` method. We'll assign the `createSagaMiddleware` call to the `sagaMiddleware` constant. We'll also setup a `middlewares` array to keep all our middlewares. We then use the ES6 object destructuring proposal to extract our middlewares into the `applyMiddleware` call. Finally, we run the `rootSaga` using the `sagaMiddleware`.
 
 ```js
-const sagaMiddleware = createSagaMiddleware()
-const middlewares = [sagaMiddleware]
+const sagaMiddleware = createSagaMiddleware();
+const middlewares = [sagaMiddleware];
 
-const createStoreWithMiddleware = applyMiddleware(...middlewares)(create)
+const createStoreWithMiddleware = applyMiddleware(...middlewares)(create);
 
-sagaMiddleware.run(rootSaga)
+sagaMiddleware.run(rootSaga);
 ```
 
 Let's add some code to `src/redux/sagas.js`. We'll be using the `all` and `fork` methods from `redux-saga` as well as the `HomeScreenSaga` from the saga at the Home screen directory. We then define our default export which uses the `all` method to combine multiple sagas. We then 'fork' the Home screen saga into our root saga.
 
 ```js
-import { all, fork } from "redux-saga/effects"
+import { all, fork } from 'redux-saga/effects';
 
-import HomeScreenSaga from "../screens/Home/saga"
+import HomeScreenSaga from '../screens/Home/saga';
 
 /**
  * rootSaga
  */
 export default function* root() {
-  yield all([fork(HomeScreenSaga)])
+  yield all([fork(HomeScreenSaga)]);
 }
 ```
 
@@ -533,8 +528,8 @@ Transitions are cool. Yes, _very cool_. We'd like our application to be able to 
 We also need to import the yet to be created `FadeTransition` component from `src/components/Transitions/fade.js`.
 
 ```js
-import { TransitionGroup } from "react-transition-group"
-import FadeTransition from "../../components/Transitions/fade"
+import { TransitionGroup } from 'react-transition-group';
+import FadeTransition from '../../components/Transitions/fade';
 ```
 
 Next, we'll update the `render` method of the `App` class to use our imports. We wrap everything in our `TransitionGroup` and we also use our to be created `FadeTransition` component.
@@ -555,18 +550,18 @@ Next, we'll update the `render` method of the `App` class to use our imports. We
 Next, let's create `src/components/Transitions/fade.js` and add some code. We'll be basically wrapping the children components of this class within react-transition-group's `CSSTransition` method. We also specify a timeout and a CSS class for it.
 
 ```js
-import React from "react"
-import { CSSTransition } from "react-transition-group"
+import React from 'react';
+import { CSSTransition } from 'react-transition-group';
 
 export const FadeTransition = ({ children, ...props }) => {
   return (
     <CSSTransition {...props} timeout={200} classNames="fade">
       {children}
     </CSSTransition>
-  )
-}
+  );
+};
 
-export default FadeTransition
+export default FadeTransition;
 ```
 
 Finally, we'll add a little CSS to `src/index.js` just for effect.
@@ -604,6 +599,6 @@ In our next tutorial, explore more capabilities of our state management system a
 
 - [Part 1: Build a CSS-in-JS React App with Styled Components and Priceline Design System](https://steemit.com/utopian-io/@creatrixity/pt-1-build-a-css-in-js-react-app-with-styled-components-and-priceline-design-system)
 
-- [Part 2: Build a CSS-in-JS React App with Styled Components and Priceline Design System](https://www.kaymathew.com/posts/pt-2-build-a-css-in-js-react-app-with-styled-components-and-priceline-design-system/)
+- [Part 2: Build a CSS-in-JS React App with Styled Components and Priceline Design System](https://www.kaymathew.com/articles/pt-2-build-a-css-in-js-react-app-with-styled-components-and-priceline-design-system/)
 
-- [Part 3: Build a CSS-in-JS React App with Styled Components and Priceline Design System](https://www.kaymathew.com/posts/pt-3-build-a-css-in-js-react-app-with-styled-components-and-priceline-design-system/)
+- [Part 3: Build a CSS-in-JS React App with Styled Components and Priceline Design System](https://www.kaymathew.com/articles/pt-3-build-a-css-in-js-react-app-with-styled-components-and-priceline-design-system/)

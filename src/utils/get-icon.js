@@ -2,51 +2,24 @@
 import { ICONS } from '../constants';
 
 const getIcon = (name: string) => {
-  let icon;
+  let iconsMap = {
+    twitter: ICONS.TWITTER,
+    facebook: ICONS.FACEBOOK,
+    github: ICONS.GITHUB,
+    vkontakte: ICONS.VKONTAKTE,
+    telegram: ICONS.TELEGRAM,
+    email: ICONS.EMAIL,
+    rss: ICONS.RSS,
+    linkedin: ICONS.LINKEDIN,
+    instagram: ICONS.INSTAGRAM,
+    line: ICONS.LINE,
+    linkedin: ICONS.LINKEDIN,
+    caretRight: ICONS.CARET_RIGHT,
+    logo: ICONS.LOGO,
+    rustLogo: ICONS.RUST_LOGO,
+  };
 
-  switch (name) {
-    case 'twitter':
-      icon = ICONS.TWITTER;
-      break;
-    case 'github':
-      icon = ICONS.GITHUB;
-      break;
-    case 'vkontakte':
-      icon = ICONS.VKONTAKTE;
-      break;
-    case 'telegram':
-      icon = ICONS.TELEGRAM;
-      break;
-    case 'email':
-      icon = ICONS.EMAIL;
-      break;
-    case 'rss':
-      icon = ICONS.RSS;
-      break;
-    case 'linkedin':
-      icon = ICONS.LINKEDIN;
-      break;
-    case 'instagram':
-      icon = ICONS.INSTAGRAM;
-      break;
-    case 'line':
-      icon = ICONS.LINE;
-      break;
-    case 'facebook':
-      icon = ICONS.FACEBOOK;
-      break;
-    case 'gitlab':
-      icon = ICONS.GITLAB;
-      break;
-    case 'weibo':
-      icon = ICONS.WEIBO;
-      break;
-    default:
-      icon = {};
-      break;
-  }
-
-  return icon;
+  return name in iconsMap ? iconsMap[name] : iconsMap['twitter'];
 };
 
 export default getIcon;

@@ -1,8 +1,14 @@
 /** 
  * Generic
  */
+
+* {
+  box-sizing: border-box;
+}
 html {
   font-size: $typographic-root-font-size;
+  scroll-behavior: smooth;
+  counter-reset: item;
 }
 
 body {
@@ -25,49 +31,56 @@ h4,
 h5,
 h6 {
   font-family: $typographic-font-family;
-  font-weight: 600;
+  font-weight: bold;
+  margin: 0;
 }
 
 h1 {
-  font-size: $typographic-base-font-size * 2.5;
-  @include line-height(2);
-  @include margin-top(4);
-  @include margin-bottom(1);
+  font-size: $type-scale-1;
+  line-height: $type-scale-0;
+
+  @include respond-to('small') {
+    font-size: $pf-type-scale-2;
+    line-height: $type-scale-1;
+  }
 }
 
 h2 {
-  font-size: $typographic-base-font-size * 1.6875;
-  @include line-height(1.5);
-  @include margin-top(2);
-  @include margin-bottom(.5);
+  font-size: $type-scale-2;
+  line-height: $type-scale-1;
+
+  @include respond-to('small') {
+    font-size: $type-scale-4;
+    line-height: $type-scale-3;
+  }
 }
 
 h3 {
-  font-size: $typographic-base-font-size * 1.375;
-  @include line-height(1);
-  @include margin-top(2);
-  @include margin-bottom(.5);
+  font-size: $type-scale-3;
+  line-height: $type-scale-2;
+
+  @include respond-to('small') {
+    font-size: $type-scale-5;
+    line-height: $type-scale-4;
+  }
 }
 
-h4 {
-  font-size: $typographic-base-font-size * 1.2;
-  @include line-height(1);
-  @include margin-top(1.5);
-  @include margin-bottom(.5);
+h4,
+.h4 {
+  font-size: $type-scale-4;
+  line-height: $type-scale-3;
 }
 
 h5 {
   font-size: $typographic-base-font-size;
   @include line-height(1);
-  @include margin-top(2.5);
-  @include margin-bottom(.5);
 }
 
 h6 {
   font-size: $typographic-base-font-size;
   @include line-height(1);
   @include margin-top(2.5);
-  @include margin-bottom(.5);
+  @include margin-bottom(0.5);
 }
 
 img {
@@ -87,7 +100,15 @@ hr {
   margin-right: auto;
   margin-left: auto;
   background-size: 100% 26px;
-  background-image: linear-gradient(to bottom, transparent 1px, transparent 11px, $color-base 11px, $color-base 15px, transparent 15px, transparent 26px);
+  background-image: linear-gradient(
+    to bottom,
+    transparent 1px,
+    transparent 11px,
+    $color-base 11px,
+    $color-base 15px,
+    transparent 15px,
+    transparent 26px
+  );
   width: 100px;
 }
 
@@ -100,7 +121,32 @@ a {
   &:active {
     color: $typographic-link-s-font-color;
   }
+}
 
+.pl-5 {
+  padding-left: $type-scale-5;
+}
+.ml-5 {
+  margin-left: $type-scale-5;
+}
+
+.with-underline {
+  position: relative;
+
+  &:before {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    width: 100%;
+    height: 2px;
+    background: $typographic-link-s-font-color;
+  }
+
+  &:hover,
+  &:focus,
+  &:active {
+    color: $typographic-link-s-font-color;
+  }
 }
 
 b,
@@ -116,7 +162,6 @@ ul {
     padding: 0 5px;
     margin-bottom: 10px;
   }
-
 }
 
 p {
@@ -137,8 +182,8 @@ figure {
 }
 
 figcaption {
-  @include line-height(.75);
-  @include margin-top(.25);
+  @include line-height(0.75);
+  @include margin-top(0.25);
   color: $color-base;
   font-size: $typographic-small-font-size;
   font-style: italic;
@@ -165,5 +210,156 @@ figcaption {
   .float-left {
     float: left;
   }
+}
 
+.btn-primary {
+  display: inline-block;
+  height: $button-height;
+  padding: 0 24px;
+  line-height: $button-height;
+  border: 1px solid $color-primary;
+  text-decoration: none;
+  border-radius: $button-border-radius;
+  color: $color-primary;
+
+  &:hover,
+  &:focus {
+    color: $color-primary;
+    cursor: pointer;
+  }
+
+  &--xxl {
+    height: auto;
+    padding: 1rem 4rem;
+    border-radius: 50px;
+    font-size: $type-scale-5;
+    font-weight: 600;
+
+    @include respond-to('small') {
+      font-size: $type-scale-6;
+      padding: 0.5rem 2rem;
+      line-height: $type-scale-4;
+    }
+  }
+}
+
+:root {
+  --animate-duration: 1s;
+  --animate-delay: 0.5s;
+  --animate-repeat: 1;
+}
+.animate__fadeIn {
+  -webkit-animation-name: fadeIn;
+  animation-name: fadeIn;
+}
+.animate__fadeInUp {
+  -webkit-animation-name: fadeInUp;
+  animation-name: fadeInUp;
+}
+.animate__fadeInDown {
+  -webkit-animation-name: fadeInDown;
+  animation-name: fadeInDown;
+}
+
+.animate__animated {
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-duration: var(--animate-duration);
+  animation-duration: var(--animate-duration);
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+.animate__animated.animate__infinite {
+  -webkit-animation-iteration-count: infinite;
+  animation-iteration-count: infinite;
+}
+
+.animate__animated.animate__delay-1s {
+  -webkit-animation-delay: 1s;
+  animation-delay: 1s;
+  -webkit-animation-delay: var(--animate-delay);
+  animation-delay: var(--animate-delay);
+}
+.animate__animated.animate__delay-2s {
+  -webkit-animation-delay: 2s;
+  animation-delay: 2s;
+  -webkit-animation-delay: calc(var(--animate-delay) * 2);
+  animation-delay: calc(var(--animate-delay) * 2);
+}
+.animate__animated.animate__delay-3s {
+  -webkit-animation-delay: 3s;
+  animation-delay: 3s;
+  -webkit-animation-delay: calc(var(--animate-delay) * 3);
+  animation-delay: calc(var(--animate-delay) * 3);
+}
+.animate__animated.animate__delay-4s {
+  -webkit-animation-delay: 4s;
+  animation-delay: 4s;
+  -webkit-animation-delay: calc(var(--animate-delay) * 4);
+  animation-delay: calc(var(--animate-delay) * 4);
+}
+.animate__animated.animate__delay-5s {
+  -webkit-animation-delay: 5s;
+  animation-delay: 5s;
+  -webkit-animation-delay: calc(var(--animate-delay) * 5);
+  animation-delay: calc(var(--animate-delay) * 5);
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    -webkit-transform: translate3d(0, 100%, 0);
+    transform: translate3d(0, 100%, 0);
+  }
+  to {
+    opacity: 1;
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+  }
+}
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    -webkit-transform: translate3d(0, 100%, 0);
+    transform: translate3d(0, 100%, 0);
+  }
+  to {
+    opacity: 1;
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+  }
+}
+
+@-webkit-keyframes fadeInDown {
+  0% {
+    opacity: 0;
+    -webkit-transform: translate3d(0, -100%, 0);
+    transform: translate3d(0, -100%, 0);
+  }
+  to {
+    opacity: 1;
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+  }
+}
+@keyframes fadeInDown {
+  0% {
+    opacity: 0;
+    -webkit-transform: translate3d(0, -100%, 0);
+    transform: translate3d(0, -100%, 0);
+  }
+  to {
+    opacity: 1;
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+  }
 }

@@ -1,17 +1,17 @@
 ---
-title: "Build a React Multi step Wizard with Formik and React Query"
-date: "2021-03-24T10:07:00.121Z"
-template: "post"
+title: 'Build a React Multi step Wizard with Formik and React Query'
+date: '2021-03-24T10:07:00.121Z'
+template: 'post'
 draft: false
-slug: "/posts/build-a-react-multi-step-wizard-with-formik-and-react-query"
-category: "Front End"
+slug: '/articles/build-a-react-multi-step-wizard-with-formik-and-react-query'
+category: 'Front End'
 tags:
-  - "JavaScript"
-  - "React"
-  - "React Query"
-  - "Formik"
-description: "Multi step wizards are a solution allowing complex challenges to be broken down to a list of steps needed to accomplish a goal. Sometimes branching conditional logic is used to narrow the path to be taken by the user.."
-socialImage: "https://paper-attachments.dropbox.com/s_E86B1B2D63F07F3F897CF2A503FB8B5EB7AA49926ED9F9E86682B041C6AE0F82_1614667109771_Screenshot+2021-03-02+at+7.38.10+AM.png"
+  - 'JavaScript'
+  - 'React'
+  - 'React Query'
+  - 'Formik'
+description: 'Multi step wizards are a solution allowing complex challenges to be broken down to a list of steps needed to accomplish a goal. Sometimes branching conditional logic is used to narrow the path to be taken by the user..'
+socialImage: 'https://paper-attachments.dropbox.com/s_E86B1B2D63F07F3F897CF2A503FB8B5EB7AA49926ED9F9E86682B041C6AE0F82_1614667109771_Screenshot+2021-03-02+at+7.38.10+AM.png'
 ---
 
 ## Introduction
