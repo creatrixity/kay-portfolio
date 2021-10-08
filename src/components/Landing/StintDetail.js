@@ -1,6 +1,7 @@
 import React, { useRef } from 'react';
 import cx from 'classnames';
 import { useIntersectionObserver, useSiteMetadata } from '../../hooks';
+import { useLanding } from '../../hooks/useLanding';
 import { getIcon } from '../../utils';
 import styles from './Landing.module.scss';
 import Entries from './Entries/Entries';
@@ -12,6 +13,7 @@ const StintDetail = ({ slug, selected, idx, label, epoch, designation, highlight
   const entry = useIntersectionObserver(detailRef, { freezeOnceVisible: true });
   const animateDetail = !!entry?.isIntersecting;
   const animateClasses = `animate__fadeInUp animate__animated`;
+  const [{ isStintDetailOpen }, setLandingStateValue] = useLanding();
 
   return (
     <section
@@ -26,6 +28,16 @@ const StintDetail = ({ slug, selected, idx, label, epoch, designation, highlight
         left: `${idx * 100}%`,
       }}
     >
+      <button
+        aria-label="menu"
+        onClick={() => setLandingStateValue({ isStintDetailOpen: !isStintDetailOpen })}
+        className={styles.Hamburger__button}
+      >
+        <span className={cx([styles.Hamburger, { [styles.Hamburger__closed]: isStintDetailOpen }])}>
+          <span className={styles.Hamburger__inner}></span>
+        </span>
+      </button>
+
       <div className={cx([styles.Stints__stuff])} ref={detailRef}>
         <hgroup>
           <h2 className={cx([styles.Stints__detail__title, { [animateClasses]: animateDetail }])}>{label}</h2>

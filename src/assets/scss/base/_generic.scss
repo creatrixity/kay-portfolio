@@ -40,7 +40,7 @@ h1 {
   line-height: $type-scale-0;
 
   @include respond-to('small') {
-    font-size: $pf-type-scale-1;
+    font-size: $pf-type-scale-2;
     line-height: $type-scale-1;
   }
 }

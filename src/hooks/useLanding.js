@@ -3,6 +3,8 @@ import React from 'react';
 const LandingContext = React.createContext();
 const initialState = {
   isMobileMenuOpen: false,
+  isSkillDetailOpen: false,
+  isStintDetailOpen: false,
 };
 
 function landingReducer(state, action) {

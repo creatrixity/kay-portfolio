@@ -26,6 +26,7 @@
     align-items: center;
     justify-content: space-between;
     padding: 4rem;
+    color: $color-primary;
 
     @include breakpoint-xs {
       width: 100%;
@@ -47,19 +48,15 @@
   &__Contact {
     display: flex;
     align-items: center;
-    height: 100%;
+    min-height: 100vh;
   }
 }
 
 .container {
   lost-center: $layout-width;
 
-  // @include breakpoint-xs {
-  //   lost-center: none;
-  // }
-
   &--fullHeight {
-    height: 100vh;
+    min-height: 100vh;
   }
 }
 
@@ -124,7 +121,7 @@
         text-decoration: none;
         text-decoration-skip-ink: auto;
         position: relative;
-        font-size: $type-scale-5;
+        font-size: $type-scale-6;
         color: rgba(255, 255, 255, 0.64);
         transition: var(--transition);
         width: 100%;
@@ -173,7 +170,7 @@
       transition-property: opacity, filter;
 
       &:focus {
-        outline: 2px dashed $color-primary;
+        outline: 2px dashed currentColor;
         outline-offset: 3px;
       }
     }
@@ -198,7 +195,7 @@
       width: $hamburger-width;
       height: 2px;
       border-radius: 2px;
-      background-color: $color-primary;
+      background-color: currentColor;
       transition: transform 0.22s cubic-bezier(0.55, 0.055, 0.675, 0.19) 0s;
       transform: rotate(0deg);
 
@@ -212,7 +209,7 @@
         width: $hamburger-width;
         height: 2px;
         border-radius: 4px;
-        background-color: $color-primary;
+        background-color: currentColor;
       }
 
       &:before {
@@ -233,7 +230,7 @@
   align-items: center;
 
   @include breakpoint-xs {
-    padding: 0 2rem;
+    padding: 0 2rem 2rem;
   }
 
   &__headingGroup {
@@ -319,8 +316,14 @@
 
 .About {
   background: $color-tertiary;
-  @include breakpoint-xs {
-    display: none;
+  @include respond-to('small') {
+    & {
+      padding: 5rem 2rem;
+    }
+
+    &__intro {
+      width: 100% !important;
+    }
   }
 
   &__title {
@@ -348,10 +351,6 @@
 .Contact {
   background: $color-secondary;
 
-  @include breakpoint-xs {
-    display: none;
-  }
-
   &__title {
     color: #fff;
     margin-bottom: 4rem;
@@ -372,14 +371,25 @@
     line-height: $type-scale-2;
     width: 70%;
   }
+
+  @include respond-to('small') {
+    padding: 0 1rem;
+
+    &__title {
+      margin-bottom: 1rem;
+      text-align: left;
+    }
+
+    &__intro {
+      font-size: $type-scale-5;
+      line-height: $type-scale-4;
+    }
+  }
 }
 
 .Skills,
 .Stints {
   display: flex;
-  @include breakpoint-xs {
-    display: none;
-  }
 
   &__title {
     color: #fff;
@@ -476,9 +486,73 @@
   }
 }
 
+.Skills,
+.Stints {
+  @include respond-to('small') {
+    flex-direction: column;
+
+    .Hamburger__button {
+      color: $color-tertiary;
+      top: 1rem;
+      right: 3rem;
+      position: absolute;
+    }
+
+    &__detail {
+      position: absolute;
+      padding: 2rem;
+      font-size: $type-scale-6;
+
+      &__desc {
+        line-height: $type-scale-4;
+        font-size: $type-scale-5;
+      }
+    }
+
+    &__details {
+      display: flex;
+      -webkit-box-pack: center;
+      justify-content: center;
+      -webkit-box-align: center;
+      align-items: center;
+      position: fixed;
+      top: 0px;
+      bottom: 0px;
+      right: 0px;
+      width: 100vw;
+      outline: 0px;
+      background-color: $color-tertiary;
+      box-shadow: -10px 0px 30px -15px $color-secondary;
+      z-index: 100;
+      transition: transform 0.3s ease;
+      transform: translateX(100vw);
+      visibility: hidden;
+
+      &__open {
+        transform: translateX(0);
+        visibility: visible;
+      }
+    }
+
+    &__list {
+      display: block;
+
+      &__inner {
+        padding: 2rem;
+      }
+    }
+  }
+}
+
 .Stints {
   &__icon {
     max-width: 150px;
+  }
+
+  @include respond-to('small') {
+    &__icon {
+      max-width: 75px;
+    }
   }
 
   &__detail {
@@ -518,12 +592,43 @@
       margin: 0.5rem 1rem 0 0;
     }
   }
+
+  @include respond-to('small') {
+    &__detail {
+      background: $color-secondary;
+
+      .Hamburger__button {
+        color: $color-primary;
+      }
+
+      &__desc {
+        font-size: $type-scale-5;
+      }
+
+      &__epoch {
+        font-size: $type-scale-6;
+      }
+
+      &__highlight {
+        font-size: $type-scale-6;
+      }
+    }
+  }
 }
 
 .Contact {
+  @include respond-to('small') {
+    &__intro {
+      font-size: $type-scale-6;
+      width: 100%;
+    }
+  }
+
   &__footer {
-    @include breakpoint-xs {
-      display: none;
+    @include respond-to('small') {
+      display: block;
+      font-size: $type-scale-6;
+      padding: 2rem 0;
     }
 
     display: flex;

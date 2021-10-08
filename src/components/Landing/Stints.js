@@ -3,6 +3,7 @@ import React, { useRef, useState } from 'react';
 import cx from 'classnames';
 import { useIntersectionObserver, useSiteMetadata } from '../../hooks';
 import { getIcon } from '../../utils';
+import { useLanding } from '../../hooks/useLanding';
 import styles from './Landing.module.scss';
 import Entries from './Entries/Entries';
 import EntryCard from './Entries/EntryCard';
@@ -15,6 +16,7 @@ type Props = {
 
 const Stints = ({ children }: Props) => {
   const [selectedStint, setSelectedStint] = useState({ stint: 'kudi', idx: 0 });
+  const [{ isStintDetailOpen }, setLandingStateValue] = useLanding();
   const { stints } = useSiteMetadata();
   const stintsRef = useRef();
   const entry = useIntersectionObserver(stintsRef, { freezeOnceVisible: true });
@@ -22,7 +24,7 @@ const Stints = ({ children }: Props) => {
 
   return (
     <section className={cx(styles.Stints)} id="experience">
-      <div className={styles.Stints__details}>
+      <div className={cx([styles.Stints__details, { [styles.Skills__details__open]: isStintDetailOpen }])}>
         <section
           className={cx([styles.Stints__wrapper])}
           style={{
@@ -59,7 +61,10 @@ const Stints = ({ children }: Props) => {
             {stints.map(({ label, slug }, idx) => (
               <EntryCard
                 selected={selectedStint.stint === slug}
-                onSelectEntry={() => setSelectedStint({ stint: slug, idx })}
+                onSelectEntry={() => {
+                  setLandingStateValue({ isStintDetailOpen: true });
+                  setSelectedStint({ stint: slug, idx });
+                }}
                 animateCard={animateStintsTextIn}
                 idx={idx}
                 label={label}

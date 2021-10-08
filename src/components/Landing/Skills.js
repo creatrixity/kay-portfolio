@@ -8,6 +8,7 @@ import Entries from './Entries/Entries';
 import EntryCard from './Entries/EntryCard';
 import Icon from '../Icon/Icon';
 import SkillDetail from './SkillDetail';
+import { useLanding } from '../../hooks/useLanding';
 
 type Props = {
   children: React.ReactChildren,
@@ -15,6 +16,8 @@ type Props = {
 
 const Skills = ({ children }: Props) => {
   const [selectedSkill, setSelectedSkill] = useState({ skill: 'javascript', idx: 0 });
+  const [{ isSkillDetailOpen }, setLandingStateValue] = useLanding();
+
   const { skills } = useSiteMetadata();
   const skillsRef = useRef();
   const entry = useIntersectionObserver(skillsRef, { freezeOnceVisible: true });
@@ -35,7 +38,10 @@ const Skills = ({ children }: Props) => {
             {skills.map(({ label, slug }, idx) => (
               <EntryCard
                 selected={selectedSkill.skill === slug}
-                onSelectEntry={() => setSelectedSkill({ skill: slug, idx })}
+                onSelectEntry={() => {
+                  setLandingStateValue({ isSkillDetailOpen: true });
+                  setSelectedSkill({ skill: slug, idx });
+                }}
                 animateCard={animateSkillsTextIn}
                 idx={idx}
                 key={slug}
@@ -61,7 +67,7 @@ const Skills = ({ children }: Props) => {
           </Entries>
         </section>
       </div>
-      <div className={styles.Skills__details}>
+      <div className={cx([styles.Skills__details, { [styles.Skills__details__open]: isSkillDetailOpen }])}>
         <section
           className={cx([styles.Skills__wrapper])}
           style={{
