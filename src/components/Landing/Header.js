@@ -50,7 +50,7 @@ const Header = ({ animateLinksIn }) => {
         onClick={() => setLandingStateValue({ isMobileMenuOpen: !isMobileMenuOpen })}
         className={styles.Hamburger__button}
       >
-        <span className={styles.Hamburger}>
+        <span className={cx([styles.Hamburger, { [styles.Hamburger__closed]: isMobileMenuOpen }])}>
           <span className={styles.Hamburger__inner}></span>
         </span>
       </button>

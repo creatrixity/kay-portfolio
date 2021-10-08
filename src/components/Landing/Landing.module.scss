@@ -65,6 +65,8 @@
 
 .MobileMenu {
   display: none;
+  transition: transform 0.3s cubic-bezier(0.55, 0.055, 0.675, 0.19);
+
   @include respond-to('small') {
     display: flex;
     -webkit-box-pack: center;
@@ -141,7 +143,10 @@
 }
 
 .Hamburger {
-  display: none;
+  &,
+  &__button {
+    display: none;
+  }
 
   @include respond-to('small') {
     display: inline-block;
@@ -150,7 +155,7 @@
     height: 24px;
 
     &__button {
-      display: flex;
+      display: flex !important;
       -webkit-box-pack: center;
       justify-content: center;
       -webkit-box-align: center;
@@ -170,6 +175,19 @@
       &:focus {
         outline: 2px dashed $color-primary;
         outline-offset: 3px;
+      }
+    }
+
+    &__closed &__inner {
+      transform: rotate(225deg);
+
+      &:before {
+        opacity: 0;
+      }
+
+      &:after {
+        transform: rotate(-90deg);
+        bottom: 0;
       }
     }
 
@@ -264,7 +282,8 @@
 .NavList {
   display: inline-flex;
   list-style: none;
-  @include breakpoint-xs {
+
+  @include respond-to('small') {
     display: none;
   }
 
