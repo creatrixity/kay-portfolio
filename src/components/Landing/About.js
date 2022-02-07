@@ -41,10 +41,18 @@ const About = ({ children }: Props) => {
               ])}
             >
               Over the last couple of years, I've had the good fortune of working on a variety of interesting projects,
-              from building terminal management systems for POS devices to onboarding software for the military. My main
-              focus these days is building products that help us solve more problems for financially underrepresented
+              from building terminal management systems for POS devices to onboarding software for the military. My previous
+              focus was building products that helped solve more problems for financially underrepresented
               people at Kudi.{' '}
             </p>
+            <p
+              className={cx([
+                styles.About__intro,
+                { 'animate__fadeInUp animate__animated animate__delay-1s': animateAboutTextIn },
+              ])}
+            >Currently, I help merchants make more money selling on the web with Paystack.{' '}
+            </p>
+
             <p
               className={cx([
                 styles.About__intro,
